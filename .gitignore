@@ -3,3 +3,4 @@
 *.log
 *.dvi
 # PDF files built by accident locally tsk tsk
+*.pdf
