@@ -1,0 +1,50 @@
+/* The dependency tree of the HEP applications
+We assume that the graph is directed, else we end up with infinite builds on Jenkins,
+hence the use of "digraph" below.
+*/
+digraph hepdep {
+/*
+First, we draw all of  the main nodes in the HEP tree
+- Nodes are sorted alphabetically.
+- node names are all lower case
+- node lables are what the node is called by it's developers
+*/
+
+clhep [label="CLHEP"];
+fastjet [label="FastJET"];
+geant4 [label="Geant4"];
+hepmc [label="HEP MC \n(version 3)"];
+herwig [label="HERWIG"]
+lhapdf [label="LHA PDF"];
+pythia [label="Pythia"];
+pythia6 [label="Pythia 6"];
+pythia8 [label="Pythia 8"];
+rivet [label="RIVET"];
+root [label=ROOT];
+root5 [label="ROOT v5"];
+root6 [label="ROOT v6"];
+thepeg [label="The PEG"];
+yoda [label="YODA"];
+/* Now, those outside of the HEP tree, in the foundation tree*/
+boost [label="BOOST\n C++ Libraries"];
+python [label="Python 2.7"];
+bzlib [label="BZip"];
+zlib [label="zlib"];
+gsl [label="GNU Science\nLibraries"];
+cmake [label="CMake"];
+lzma [label="lzma"];
+fits [label="FITS IO"];
+openssl [label="Open SSL"];
+sqlite [label="Sqlite"];
+freetype [label="freetype"];
+fftw [label="FFTW 3"];
+openblas [label="Open BLAS"];
+/* Now, we draw the dependencies*/
+yoda -> { python, boost};
+
+thepeg -> { boost, zlib, bzlib, gsl, lhapdf, hepmc, rivet, fastjet};
+
+pythia8 -> {root, hepmc, boost, python}
+
+root -> {cmake, gsl, lzma, fits, sqlite, freetype, fftw, openblas, python, openssl}
+}
