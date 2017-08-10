@@ -39,12 +39,26 @@ sqlite [label="Sqlite"];
 freetype [label="freetype"];
 fftw [label="FFTW 3"];
 openblas [label="Open BLAS"];
+cython [label="Cython"]
 /* Now, we draw the dependencies*/
-yoda -> { python, boost};
+cython->python [newrank="true"];
+yoda -> { python, boost, root, cython};
 
 thepeg -> { boost, zlib, bzlib, gsl, lhapdf, hepmc, rivet, fastjet};
+pythia-> {pythia6, pythia8};
+pythia8 -> {root, hepmc, boost, python};
+root6 -> root;
+root5 -> root;
+root -> {cmake, gsl, lzma, fits, sqlite, freetype, fftw, openblas, python, openssl,pythia};
 
-pythia8 -> {root, hepmc, boost, python}
+rivet -> {yoda};
+lhapdf -> {boost};
 
-root -> {cmake, gsl, lzma, fits, sqlite, freetype, fftw, openblas, python, openssl}
+herwig -> {fastjet, lhapdf, rivet, thepeg, gsl, hepmc};
+
+geant4->{clhep, root, cmake};
+
+/* We put all of the user-facing applications on the same level */
+{rank = same; root6; root5; pythia6; pythia8}
+  {rank = same; root; geant4; herwig;}
 }
