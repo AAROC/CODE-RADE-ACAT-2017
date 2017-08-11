@@ -11,6 +11,7 @@ First, we draw all of  the main nodes in the HEP tree
 */
 
 clhep [label="CLHEP"];
+evtgen [label="EvtGen"];
 fastjet [label="FastJET"];
 geant4 [label="Geant4"];
 hepmc [label="HEP MC \n(version 3)"];
@@ -20,7 +21,7 @@ pythia [label="Pythia"];
 pythia6 [label="Pythia 6"];
 pythia8 [label="Pythia 8"];
 rivet [label="RIVET"];
-root [label=ROOT];
+root [label="ROOT"];
 root5 [label="ROOT v5"];
 root6 [label="ROOT v6"];
 thepeg [label="The PEG"];
@@ -54,10 +55,11 @@ root -> {cmake, gsl, lzma, fits, sqlite, freetype, fftw, openblas, python, opens
 rivet -> {yoda};
 lhapdf -> {boost};
 
-herwig -> {fastjet, lhapdf, rivet, thepeg, gsl, hepmc};
+herwig -> {fastjet, lhapdf, rivet, thepeg, gsl, hepmc, evtgen, pythia8};
 
 geant4->{clhep, root, cmake};
 
+evtgen -> {hepmc, pythia8, photos, tauola}
 /* We put all of the user-facing applications on the same level */
 {rank = same; root6; root5; pythia6; pythia8}
   {rank = same; root; geant4; herwig;}
