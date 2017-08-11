@@ -1,14 +1,14 @@
 language: none
 dist: trusty
-sudo: false
 before_install:
 - apt-get -y update
-- apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+- apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended graphivz dot
 install:
 before_script:
 - mkdir build
 script:
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory build ACAT2017-CODE-RADE-poster.tex
+- dot dependencies.dot -Tpng > build/graph.png
 after_sucess:
 after_failure:
 after_script:
@@ -21,7 +21,9 @@ deploy:
   provider: releases
   api_key:
     secure: cafkBweatPBNVDe1BpYjzKusujhocdu0eYditBTmOr29bcYGmlfuKmGXrj6GhiGe8vxNPOKpK5N3RwLpUUW6Jl3LXKvoHm4ZMBnDDZlt0rsCA3kl7q3S4l7OGrNjKelgaIWHVvlDI7rJ+SwMfk/7bgiKmjSO2HzeDHRF4jqdmsRkIYG9lWXvf+jBbvLd4b+5FouQzqqG+PAzpvesD+ft5iYIyJITic/qbnpL60Y5oFbOw/bqOgW2bBoJhm3GHPPT0tcP8A33cvDd6Eojw/MfmbvBy1AaT+KJnlbNV4tLFagmvFWO/6f9GhFtQIxO/YxO9dLbPR/y5Qc7OQfFekXE29QCbUOfx2WA6WRryTOVHvrlJNA7/tAQ/Lf4FLoQ6SA7DQ17YVbYL8wCXpSMAsZn1xC/ruBI0rubEo6PRXQTZ1kLatAzbwlzP8nB5qngKk2bKVB8r95CG21N839oTxta8nNqJiuAwfhY3DvHMGXnhg5mlmJ7W/tVr0nMw25+LPKYHfgRTfBIPKtC+QIyzP5/yDdwXO6kJbF/15+sxs0esa0FusubFf7vjpwL4YSDaF83kE8/zIY54KdiuErg1pbpX/oDKMsrmZ48ErY/TJmqWLHH/tuzk4vwOHmWkesYKZyrFtp4n+4SwytbdGCYBl4UPIIaZdvqnSXZizs14wt7N50=
-  file: build/ACAT2017-CODE-RADE-poster.pdf
+  file:
+    - build/ACAT2017-CODE-RADE-poster.pdf
+    - build/graph.png
   on:
     repo: AAROC/CODE-RADE-ACAT-2017
     tags: true
