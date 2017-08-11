@@ -2,7 +2,7 @@ language: none
 dist: trusty
 before_install:
 - sudo apt-get -qq update
-- sudo apt-get install -y texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended graphviz dot
+- sudo apt-get install -y texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended graphviz
 install:
 before_script:
 - mkdir build
