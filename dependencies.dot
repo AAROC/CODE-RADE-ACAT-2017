@@ -14,8 +14,10 @@ clhep [label="CLHEP"];
 evtgen [label="EvtGen"];
 fastjet [label="FastJET"];
 geant4 [label="Geant4"];
-hepmc [label="HEP MC \n(version 3)"];
-herwig [label="HERWIG"]
+hepmc [label="HEPMC"];
+hepmc2 [label="HEP MC\n(version 2)"];
+hepmc3 [label="HEP MC \n(version 3)"];
+herwig [label="HERWIG"];
 lhapdf [label="LHA PDF"];
 pythia [label="Pythia"];
 pythia6 [label="Pythia 6"];
@@ -24,6 +26,7 @@ rivet [label="RIVET"];
 root [label="ROOT"];
 root5 [label="ROOT v5"];
 root6 [label="ROOT v6"];
+taola [label="TAUOLA"];
 thepeg [label="The PEG"];
 yoda [label="YODA"];
 /* Now, those outside of the HEP tree, in the foundation tree*/
@@ -40,6 +43,7 @@ sqlite [label="Sqlite"];
 freetype [label="freetype"];
 fftw [label="FFTW 3"];
 openblas [label="Open BLAS"];
+photos [label="PHOTOS"];
 cython [label="Cython"]
 /* Now, we draw the dependencies*/
 cython->python [newrank="true"];
@@ -48,6 +52,7 @@ yoda -> { python, boost, root, cython};
 thepeg -> { boost, zlib, bzlib, gsl, lhapdf, hepmc, rivet, fastjet};
 pythia-> {pythia6, pythia8};
 pythia8 -> {root, hepmc, boost, python};
+photos -> {hepmc2};
 root6 -> root;
 root5 -> root;
 root -> {cmake, gsl, lzma, fits, sqlite, freetype, fftw, openblas, python, openssl,pythia};
@@ -55,11 +60,13 @@ root -> {cmake, gsl, lzma, fits, sqlite, freetype, fftw, openblas, python, opens
 rivet -> {yoda};
 lhapdf -> {boost};
 
-herwig -> {fastjet, lhapdf, rivet, thepeg, gsl, hepmc, evtgen, pythia8};
+herwig -> {fastjet, lhapdf, rivet, thepeg, gsl, hepmc, evtgen, pythia8, photos};
 
 geant4->{clhep, root, cmake};
 
 evtgen -> {hepmc, pythia8, photos, tauola}
+
+tauola -> {hepmc}
 /* We put all of the user-facing applications on the same level */
 {rank = same; root6; root5; pythia6; pythia8}
   {rank = same; root; geant4; herwig;}
