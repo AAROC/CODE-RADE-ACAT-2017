@@ -86,7 +86,6 @@
 %
 %             \end{itemize}
 %         }
-         \column{0.5}
          \block[roundedcorners=40]{CODE-RADE is }{
              \begin{itemize}
                      \item Cross platform
@@ -113,15 +112,16 @@
              \end{itemize}
 
          }
+         \column{0.5}
          \block[roundedcorners=40]{Achitecture}{
              \begin{itemize}
-                     \item CODE-RADE Components
+                     \item Components
                            \begin{itemize}
                                \item Version Control (Github)
                                \item Continuous Integration (Jenkins)
                                \item Automated Delivery (CVMFS)
                            \end{itemize}
-                     \item CODE-RADE workflow 
+                     \item Workflow 
                          \begin{itemize}
                                  \item Build : User/expert-defined means to produce executable applications or libraries
                                  \item Test : Infrastructure operator-defined targets means to ensure viability
@@ -130,13 +130,23 @@
              \end{itemize}
 
          }
+         \block[roundedcorners=40]{Target Matrix}{
+             \begin{itemize}
+                 \item One can add as many target configurations to the build matrix as can be reliably simulated.
+                 \item Currently we have defined three axes :
+                 \begin{itemize}
+                    \item Architecture x86\_64, ARM, etc.
+                    \item Operating System RHEL Ubuntu, SLES, etc.
+                    \item site specific - an axis encapsulating the special nature of a site, its interconnects, compiler, local libraries.
+                 \end{itemize} 
+             \end{itemize}
+        }
          \block[roundedcorners=40]{Technology}{
              \begin{itemize}
                  \item docker
                  \item quay.io
                  \item persistant storage
-                 \item R
-                 \item S
+                 \item releases get a doi, authors are submitters and PR
              \end{itemize}
         }
      \end{columns}
