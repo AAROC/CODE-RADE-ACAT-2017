@@ -58,6 +58,13 @@
 
      \begin{columns}%blocks will be placed into columns
          \column{.5}
+         \block[roundedcorners=40]{The problem CODE-RADE solves}{
+             \center{The researcher is faced with a paradox.}\\
+             \center\includegraphics[scale=.5]{img/legoparadox.png}\\
+             There is a huge amount of computing resources available, and a rich, well maintained, interoperable infrstructure of services... \\
+             \center\textbf BUT \\
+             Getting applictions onto it requires far too much effort.
+         }         
          \block[roundedcorners=40]{The problem solved by CODE-RADE}{
              \begin{itemize}
                  \item Lowers barrier to entry to grid or cloud infrastructure, or a single HPC site.
@@ -79,7 +86,33 @@
 %
 %             \end{itemize}
 %         }
+         \column{0.5}
+         \block[roundedcorners=40]{CODE-RADE is }{
+             \begin{itemize}
+                     \item Cross platform
+                         \begin{itemize}
+                                 \item Build and test artifacts for an arbitrary set of targets.
+                                 \item Promote diversity in computing platforms.
+                                 \item Ensure proper optimisations and application portability
+                         \end{itemize}
+                     \item Atomic
+                         \begin{itemize}
+                                 \item Fine grained control over dependencies, versions, and targets
+                                 \item Relevant action taken on each event of CODE-RADE cycle.
+                         \end{itemize}
+                     \item Community
+                         \begin{itemize}
+                                 \item No restriction on applications that can be integrated.
+                                 \item Anyone can contribute applications, resource, code review, etc.
+                         \end{itemize}
+                     \item Automated
+                         \begin{itemize}
+                                 \item Heavy reliance on automated agents to reduce bias, lead time.
+                                 \item \textbf User-driven
+                         \end{itemize}
+             \end{itemize}
 
+         }
          \block[roundedcorners=40]{Achitecture}{
              \begin{itemize}
                      \item CODE-RADE Components
@@ -97,7 +130,6 @@
              \end{itemize}
 
          }
-         \column{0.5}
          \block[roundedcorners=40]{Technology}{
              \begin{itemize}
                  \item docker
