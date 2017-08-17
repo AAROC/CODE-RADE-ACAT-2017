@@ -20,34 +20,62 @@
 %% and version 2.0 or later is part of all distributions of
 %% LaTeX version 2013/12/01 or later.
 %% 
-
-
-
-
- \documentclass[25pt, a0paper, portrait, margin=0mm, innermargin=15mm,
-     blockverticalspace=15mm, colspace=15mm, subcolspace=8mm]{tikzposter} %Default values for poster format options.
+ \documentclass[17pt, a0paper, landscape, margin=0mm, innermargin=15mm,
+     blockverticalspace=10mm, colspace=5mm, subcolspace=8mm]{tikzposter} %Default values for poster format options.
 
  \tikzposterlatexaffectionproofon %shows small comment on how the poster was made at bottom of poster
 \usepackage{graphicx}
- % Commands
+\usepackage{xpatch}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[space]{grffile}
+% Commands
  \newcommand{\bs}{\textbackslash}   % backslash
  \newcommand{\cmd}[1]{{\bf \color{red}#1}}   % highlights command
 
- % Title, Author, Institute
- \title{CODE-RADE}
- \author{Sean Murray, \& Bruce Becker}
- \institute{Council for Scientific and Industrial Research, Meraka. University of Cape Town}
-\titlegraphic{img/coderade.png}
 
+ \setlength{\tabcolsep}{2em}
+
+ % Title, Author, Institute
+ \title{\parbox{0.95\linewidth}{\centering \textbf{CODE-RADE}}}
+ \author{
+     \begin{tabular}{c|c}
+         \textbf{Sean Murray}
+         , \& Bruce Becker}
+ \institute{Council for Scientific and Industrial Research, Meraka. University of Cape Town}
+\titlegraphic{
+    \raisebox{0cm}{\includegraphics[scale=1.2]{img/coderade.png}}
+    \hfill
+    \raisebox{0cm}{\includegraphics[scale=0.2]{img/SANCG_logoTransparent-cropped.png}}
+}
  % -- PREDEFINED THEMES ---------------------- %
  % Choose LAYOUT:  Default, Basic, Rays, Simple, Envelope, Wave, Board, Autumn, Desert,
 \usetheme{Rays} % Board, Simple, Wave, Rays.
 \usecolorstyle[colorPalette=BrownBlueOrange]{Envelope}
 
 
- \begin{document}
+\makeatletter
+\def\TP@titlegraphictotitledistance{-7.5cm}
+\settitle
+{
+  \centering
+  \vbox
+  {
+    \@titlegraphic \\ [\TP@titlegraphictotitledistance] 
+    \centering
+    \color{titlefgcolor}
+    {\bfseries \huge \sc \@title \par}
+    \vspace*{1em}
+    {\LARGE \@author \par}
+    \vspace*{1.2em}
+    {\LARGE \@institute}
+  }
+}
 
-     \maketitle{}
+\begin{document}
+
+\maketitle[width=0.98\textwidth]
+
 % basic structure
 % Summary of arch and tech
 % schematic of code-rade workflow, the actors etc.
@@ -57,7 +85,7 @@
 % todo and next features
 
      \begin{columns}%blocks will be placed into columns
-         \column{.5}
+         \column{.25}
          \block[roundedcorners=40]{The problem CODE-RADE solves}{
              \center{The researcher is faced with a paradox.}\\
              \center\includegraphics[scale=.5]{img/legoparadox.png}\\
@@ -112,7 +140,7 @@
              \end{itemize}
 
          }
-         \column{0.5}
+         \column{0.225}
          \block[roundedcorners=40]{Achitecture}{
              \begin{itemize}
                      \item Components
@@ -151,22 +179,17 @@
         }
      \end{columns}
 
-     \block[bodyoffsety=-1cm]{CODE-RADE Work Flow}{\vspace{2em}
-     %\block[titleoffsety=-1cm,bodyoffsety=-1cm]{Sample document}{\vspace{2em}
-   % \includegraphics{img/sagrid.png} 
-    \includegraphics[scale=0.7]{img/Jenkinsworkflowschematic.png} \includegraphics[scale=1.25]{img/code-rade-jenkins-magic.png}
-     }
      % map of whereit can be run (grid sites)
 % description of repos and repo layouts.
 % todo and next features
 
      \begin{columns}%blocks will be placed into columns
-         \column{.5}
+         \column{.25}
          \block[roundedcorners=40]{Where can all this can run}{
              %  \includegraphics{}
          }
 
-         \column{0.5}
+         \column{0.25}
          \block[roundedcorners=40]{Repositories}{
              \begin{itemize}
                  \item I
