@@ -43,7 +43,7 @@
          Sean Murray & Bruce Becker
      \end{tabular}
 }
- \institute{Council for Scientific and Industrial Research, Meraka. University of Cape Town}
+\institute{Council for Scientific and Industrial Research, Meraka. University of Cape Town}
 \titlegraphic{
     \raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
     \hspace{1cm}\raisebox{-2cm}{\includegraphics[scale=0.125]{img/UCTlogo.png}}
@@ -56,7 +56,22 @@
 \usetheme{Rays} % Board, Simple, Wave, Rays.
 \usecolorstyle[colorPalette=BrownBlueOrange]{Envelope}
 
+\defineblockstyle{BazBlock}{%
+    titlewidthscale=0.8, bodywidthscale=1, titlecenter, 
+    titleoffsetx=0pt, titleoffsety=0pt, bodyoffsetx=0pt, bodyoffsety=15mm,
+    bodyverticalshift=15mm, roundedcorners=22, linewidth=5pt, titleinnersep=8mm,
+    bodyinnersep=8mm
+    }{
+        \draw[rounded corners=\blockroundedcorners, inner sep=\blockbodyinnersep, line width=\blocklinewidth, color=black, top color=titlebgcolor!90, bottom color=titlebgcolor!20!white, ]
+        (blockbody.south west) rectangle (blockbody.north east); %
+        \ifBlockHasTitle%
+        \draw[rounded corners=\blockroundedcorners, inner sep=\blocktitleinnersep, line width=\blocklinewidth, color=black, 
+        top color=titlebgcolor!90, bottom color=titlebgcolor!20!white, ]
+    (blocktitle.south west) rectangle (blocktitle.north east);
+    \fi%    
+}
 
+\newcommand\myblock[3][BazBlock]{\useblockstyle{#1}\block{#2}{#3}\useblockstyle{Basic}}
 \makeatletter
 \def\TP@titlegraphictotitledistance{-5.5cm}
 \settitle
@@ -76,7 +91,7 @@
 }
 
 \begin{document}
-
+\useblockstyle{Basic}
 \maketitle[width=0.98\textwidth]
 
 % basic structure
@@ -137,14 +152,14 @@
                      \item Components
                            \begin{itemize}
                                \item Version Control (Github)
-                               \item Continuous Integration (Jenkins)
+                               \item Continuous Integration (Jenkins and Jarvis)
                                \item Automated Delivery (CVMFS)
                            \end{itemize}
                      \item Workflow 
                          \begin{itemize}
                                  \item Build : User/expert-defined means to produce executable applications or libraries
-                                 \item Test : Infrastructure operator-defined targets means to ensure viability
-                                 \item Deliver : Ensure once tests pass, the application is available.
+                                 \item Test : Infrastructure operator-defined targets provide a means to ensure viability
+                                 \item Deliver : Ensure that once the tests pass, the application is available at all sites.
                          \end{itemize}
              \end{itemize}
 
@@ -155,7 +170,7 @@
                  \item Currently we have defined three axes :
                  \begin{itemize}
                     \item Architecture x86\_64, ARM, etc.
-                    \item Operating System RHEL Ubuntu, SLES, etc.
+                    \item Operating System RHEL Ubuntu, SLES
                     \item site specific - an axis encapsulating the special nature of a site, its interconnects, compiler, local libraries.
                  \end{itemize} 
              \end{itemize}
