@@ -108,7 +108,7 @@
              \center{The researcher is faced with a paradox.}\\
              \center\includegraphics[scale=.5]{img/legoparadox.png}\\
              There is a huge amount of computing resources available, and a rich, well maintained, interoperable infrstructure of services... \\
-             \center\textbf BUT \\
+             \vspace{-1cm}\center\textbf BUT \\
              Getting applictions onto it requires far too much effort.
          }         
          \block[roundedcorners=40]{CODE-RADE solves this by }{
@@ -133,6 +133,7 @@
 %
 %             \end{itemize}
 %         }
+         \note[targetoffsetx=-.05\textwidth,targetoffsety=9.5cm,innersep=.4cm,angle=-45,connection]{Zenodo issues a DOI}
          \block[roundedcorners=40]{CODE-RADE is }{
              \begin{itemize}
                  \item \textbf{Cross platform} It builds and test artifacts for an arbitrary set of targets, promoting diversity in computing platforms and ensures proper optimisations and application portability
@@ -150,6 +151,10 @@
          \block[roundedcorners=40]{Workflow}{
            \center\includegraphics[scale=1]{img/code-rade-jenkins-magic.png}
          }
+               \note[targetoffsetx=30cm, targetoffsety=5cm,rotate=1,angle=270,radius=8cm,width=.15\textwidth,innersep=.4cm]{                                                                     
+                         At this point the hash and cvmfs release\\
+                         are packaged into a DOI and the pull requesters are listed as authors.                                                                                             
+                                  } 
          \begin{subcolumns}
          \subcolumn{0.5}
          \block[roundedcorners=40]{Achitecture}{
