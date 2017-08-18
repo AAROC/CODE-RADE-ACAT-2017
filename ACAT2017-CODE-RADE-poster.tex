@@ -30,7 +30,8 @@
 \usepackage[english]{babel}
 \usepackage[space]{grffile}
 \usepackage{listings}
-
+\usepackage{wrapfig}
+\usepackage{tikz}
 % Commands
  \newcommand{\bs}{\textbackslash}   % backslash
  \newcommand{\cmd}[1]{{\bf \color{red}#1}}   % highlights command
@@ -108,9 +109,17 @@
          \column{.25}
          \block[roundedcorners=40]{The problem CODE-RADE solves}{
              \center{The researcher is faced with a paradox.}\\
-                 \center\includegraphics[scale=.5]{img/legoparadox.png}
-                 There is a huge amount of computing resources available, and a rich, well maintained, interoperable infrstructure of services... \\
-             \vspace{-1cm}\center\textbf BUT \\
+               %  \begin{wrapfigure}[10]{r}{0.25\linewidth}
+               %      \begin{tikzfigure}[caption for legoparadox]
+                %   \begin{tikzpicture}[ remember picture,overlay]
+                %       \node[at=(current page.center),opacity=0.3]{
+                  \center\includegraphics[scale=.5]{img/legoparadox.png}\\
+                    
+               %};
+               %    \end{tikzpicture}
+               %      \end{tikzfigure}
+               %   \end{wrapfigure}
+                     There is a huge amount of computing resources available, and a rich, well maintained, interoperable infrstructure of services... \textbf BUT \\
              Getting applictions onto it requires far too much effort.
          }         
          \block[roundedcorners=40]{CODE-RADE solves this by }{
