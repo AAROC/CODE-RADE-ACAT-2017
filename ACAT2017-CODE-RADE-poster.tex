@@ -48,6 +48,7 @@
     \raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
     \hspace{1cm}\raisebox{-2cm}{\includegraphics[scale=0.125]{img/UCTlogo.png}}
     \hfill
+    \hspace{1cm}\raisebox{-2cm}{\includegraphics[scale=0.25]{img/UFSLogo.jpg}}
     \raisebox{0cm}{\includegraphics[scale=0.2]{img/SANCG_logoTransparent-cropped.png}}
 }
  % -- PREDEFINED THEMES ---------------------- %
@@ -97,11 +98,12 @@
          }         
          \block[roundedcorners=40]{CODE-RADE solves this by }{
              \begin{itemize}
-                 \item Lowers barrier to entry to grid or cloud infrastructure, or a single HPC site.
-                 \item Application expert can prove to resource provider that the application will run on the sites execution environment
+                 \item Lowers barrier to entry to grid or cloud infrastructure, or single HPC site.
+                 \item Application experts are able to prove to resource providers that the application will run on the sites execution environment
                  \item Easily manages the lifecycle of applications across multiple versions, architectures and configurations
                  \item Ensures that once an application is certified, its available on as many sites as possible.
                  \item Promotes collaboration between researcher, research software engineer, and infrastructure provider.
+                     \item A DOI is automatically created for a version hash and deployment with pull requests as authors.
              \end{itemize}
         }
 %         \block[roundedcorners=40]{7 Hypotheses of scientific computing}{
@@ -118,27 +120,14 @@
 %         }
          \block[roundedcorners=40]{CODE-RADE is }{
              \begin{itemize}
-                     \item Cross platform
-                         \begin{itemize}
-                                 \item Build and test artifacts for an arbitrary set of targets.
-                                 \item Promote diversity in computing platforms.
-                                 \item Ensure proper optimisations and application portability
-                         \end{itemize}
-                     \item Atomic
-                         \begin{itemize}
-                                 \item Fine grained control over dependencies, versions, and targets
-                                 \item Relevant action taken on each event of CODE-RADE cycle.
-                         \end{itemize}
-                     \item Community
-                         \begin{itemize}
-                                 \item No restriction on applications that can be integrated.
-                                 \item Anyone can contribute applications, resource, code review, etc.
-                         \end{itemize}
-                     \item Automated
-                         \begin{itemize}
-                                 \item Heavy reliance on automated agents to reduce bias, lead time.
-                                 \item \textbf User-driven
-                         \end{itemize}
+                 \item \textbf{Cross platform} It builds and test artifacts for an arbitrary set of targets, promoting diversity in computing platforms and ensures proper optimisations and application portability
+                 \item \textbf{Atomic}
+                                 There is fine grained control over dependencies, versions, and targets and relevant actions are taken on each event in the CODE-RADE cycle.
+                                 Relevant action taken on each event of CODE-RADE cycle.
+                  \item \textbf{Community}
+                      No restriction is placed on the applications that can be integrated, anyone is free contribute applications(dev or testing), resource(human or hardware), code review to name a few.
+                  \item \textbf{Automated}
+                                 Heavy reliance on automated agents to reduce bias, lead time, and all communicated via agents in slack channels. This is a \textbf User-driven process.
              \end{itemize}
 
          }
@@ -179,13 +168,13 @@
                  \item releases get a doi, authors are submitters and PR
              \end{itemize}
         }
-     \end{columns}
+   %  \end{columns}
 
      % map of whereit can be run (grid sites)
 % description of repos and repo layouts.
 % todo and next features
 
-     \begin{columns}%blocks will be placed into columns
+     %\begin{columns}%blocks will be placed into columns
          \column{.25}
          \block[roundedcorners=40]{Where can all this can run}{
              %  \includegraphics{}
