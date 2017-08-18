@@ -1,0 +1,8 @@
+export CVMFS\_DIR=/cvmfs/code-rade.africa-grid.org 
+module use /cvmfs/code-rade.africa-grid.org/modules/compilers  
+module use /cvmfs/code-rade.africa-grid.org/modules/libraries  
+module use /cvmfs/code-rade.africa-grid.org/modules/hep  
+module use /cvmfs/code-rade.africa-grid.org/modules/astronomy  
+module use /cvmfs/code-rade.africa-grid.org/modules/bioinformatics
+which g++
+/cvmfs/code-rade.africa-grid.org/generic/centos7/x86\_64/gcc/6.3.0/bin/g++  

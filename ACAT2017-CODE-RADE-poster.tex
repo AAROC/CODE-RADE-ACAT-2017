@@ -29,6 +29,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[space]{grffile}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{hyperref}
+
 % Commands
  \newcommand{\bs}{\textbackslash}   % backslash
  \newcommand{\cmd}[1]{{\bf \color{red}#1}}   % highlights command
@@ -106,10 +110,14 @@
          \column{.25}
          \block[roundedcorners=40]{The problem CODE-RADE solves}{
              \center{The researcher is faced with a paradox.}\\
-             \center\includegraphics[scale=.5]{img/legoparadox.png}\\
-             There is a huge amount of computing resources available, and a rich, well maintained, interoperable infrstructure of services... \\
+             \begin{minipage}{0.125\textwidth}
+                 \center\includegraphics[scale=.5]{img/legoparadox.png}
+             \end{minipage}\hfill
+             \begin{minipage}{0.125\textwidth}
+                 There is a huge amount of computing resources available, and a rich, well maintained, interoperable infrstructure of services... \\
              \vspace{-1cm}\center\textbf BUT \\
              Getting applictions onto it requires far too much effort.
+             \end{minipage}
          }         
          \block[roundedcorners=40]{CODE-RADE solves this by }{
              \begin{itemize}
@@ -161,9 +169,9 @@
              \begin{itemize}
                      \item Components
                            \begin{itemize}
-                               \item Version control via Github
-                               \item Continuous Integration (Jenkins and Jarvis)
-                               \item Automated Delivery (CVMFS)
+                               \item Version control at Github \textcolor{blue}{github.com/SouthAfricaDigitalScience}
+                               \item Continuous Integration (Jenkins and Jarvis) \textcolor{blue}{ci.sagrid.ac.za}
+                               \item Automated Delivery (CVMFS) /cvmfs/code-rade.africa-grid
                            \end{itemize}
                      \item Workflow 
                          \begin{itemize}
@@ -174,7 +182,6 @@
              \end{itemize}
 
          }
-             \subcolumn{0.5}
          \block[roundedcorners=40]{Target Matrix}{
              \begin{itemize}
                  \item One can add as many target configurations to the build matrix as can be reliably simulated.
@@ -182,10 +189,13 @@
                  \begin{itemize}
                     \item Architecture x86\_64, ARM, etc.
                     \item Operating System RHEL Ubuntu, SLES
-                    \item site specific - an axis encapsulating the special nature of a site, its interconnects, compiler, local libraries, and a generic option.
+                    \item site specific - an axis encapsulating the special nature of a site, its interconnects, compiler, local libraries, and a catch all option of generic.
                  \end{itemize} 
+                     This can be seen in the directory structure of an application \\
+/cvmfs/code-rade.africa-grid.org/generic/centos7/x86\_64/gcc/6.3.0
              \end{itemize}
         }
+             \subcolumn{0.5}
 
          \block[roundedcorners=40]{Technology}{
              \begin{itemize}
@@ -195,6 +205,9 @@
                  \item releases get a doi, authors are submitters and PR
              \end{itemize}
         }
+         \block[roundedcorners=40]{Where can all this can run}{
+             %  \includegraphics{}
+         }
          \end{subcolumns}
    %  \end{columns}
 
@@ -204,25 +217,14 @@
 
      %\begin{columns}%blocks will be placed into columns
          \column{.25}
-         \block[roundedcorners=40]{Where can all this can run}{
-             %  \includegraphics{}
-         }
 
-         \column{0.25}
          \block[roundedcorners=40]{Repositories}{
              \begin{itemize}
                  \item I
              \end{itemize}
         }
          \block[roundedcorners=40]{Repository Layout}{
-             export CVMFS\_DIR=/cvmfs/code-rade.africa-grid.org\\
-             module use /cvmfs/code-rade.africa-grid.org/modules/compilers\\
-             module use /cvmfs/code-rade.africa-grid.org/modules/libraries\\
-             module use /cvmfs/code-rade.africa-grid.org/modules/hep\\
-             module use /cvmfs/code-rade.africa-grid.org/modules/astronomy\\
-             module use /cvmfs/code-rade.africa-grid.org/modules/bioinformatics\\
-             which g++\\
-             /cvmfs/code-rade.africa-grid.org/generic/centos7/x86\_64/gcc/6.3.0/bin/g++\\
+             \small\lstinputlisting{examplemodule}
          }
          \block[roundedcorners=40]{Fermionic Molecular Dynamics}{
                \begin{itemize}
@@ -234,9 +236,19 @@
                        \end{itemize}
                \end{itemize}
          }
-         \block[roundedcorners=40]{Where to from here}{
-             \begin{itemize}
-                 \item R
+         \block[roundedcorners=40]{Reproducibility}{
+            There are two kinds of reproducibility
+            \begin{itemize}
+                 \item Reproducing scientific results
+                     \begin{enumerate}
+                         \item One should be able reproduce \textbf{exact} workflow with the \textbf{exact expression} of the application
+                         \item The entire repository history is kept, allowing one to relate \textbf{each successful build} to a CVMFS repository version.
+                     \end{enumerate}
+                 \item Reproducing the executable application.
+                     \begin{enumerate}
+                         \item The \textbf{expression} of the application should be reproducible by different build systems
+                         \item The means for expressing the application should be citable. This is done via Zenodo.
+                     \end{enumerate}
              \end{itemize}
         }
      \end{columns}
