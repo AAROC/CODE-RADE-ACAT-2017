@@ -20,7 +20,7 @@
 %% and version 2.0 or later is part of all distributions of
 %% LaTeX version 2013/12/01 or later.
 %% 
- \documentclass[20pt, a0paper, landscape, margin=0mm, innermargin=15mm,
+ \documentclass[17pt, a0paper, landscape, margin=0mm, innermargin=15mm,
      blockverticalspace=10mm, colspace=5mm, subcolspace=8mm]{tikzposter} %Default values for poster format options.
 
  \tikzposterlatexaffectionproofon %shows small comment on how the poster was made at bottom of poster
@@ -42,11 +42,12 @@
  % Title, Author, Institute
  \title{\parbox{0.95\linewidth}{\centering \textbf{CODE-RADE a user centric code delivery system for science}}}
  \author{
-     \begin{tabular}{c|c}
-         Sean Murray & Bruce Becker
+     \begin{tabular}{cc}
+         Sean Murray & Bruce Becker\\
+         smurray@csir.co.za & bbecker@csir.co.za
      \end{tabular}
 }
-\institute{Council for Scientific and Industrial Research, Meraka. University of Cape Town}
+\institute{CSIR, Meraka. Center for Hight Performance Computing.  University of Cape Town}
 \titlegraphic{
     \raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
     \hspace{1cm}\raisebox{-1cm}{\includegraphics[scale=0.25]{img/CSIRlogo.jpg}}
@@ -119,18 +120,24 @@
                %    \end{tikzpicture}
                %      \end{tikzfigure}
                %   \end{wrapfigure}
-                     There is a huge amount of computing resources available, and a rich, well maintained, interoperable infrstructure of services... \textbf BUT \\
+                     There is a huge amount of computing resources available, and a rich, well maintained, interoperable infrstructure of services \textbf{however} \\
              Getting applictions onto it requires far too much effort.
          }         
          \block[roundedcorners=40]{CODE-RADE solves this by }{
-             \begin{itemize}
-                 \item Lowers barrier to entry to grid or cloud infrastructure, or single HPC site.
-                 \item Application experts are able to prove to resource providers that the application will run on the sites execution environment
-                 \item Easily manages the lifecycle of applications across multiple versions, architectures and configurations
-                 \item Ensures that once an application is certified, its available on as many sites as possible.
-                 \item Promotes collaboration between researcher, research software engineer, and infrastructure provider.
-                     \item A DOI is automatically created for a version hash and deployment with pull requests as authors.
-             \end{itemize}
+                  Lowering the barrier to entry to grid or cloud infrastructure, or single HPC site. 
+                  Application experts are then able to prove to resource providers that the application will run on the sites execution environment. 
+                  Easily manages the lifecycle of applications across multiple versions, architectures and configurations \\
+                  Ensures that once an application is certified, its available on as many sites as possible. \\
+                  Promotes collaboration between researcher, research software engineer, and infrastructure provider. \\
+                  A DOI is automatically created for a successfully tested git hash and deployment with pull requests as authors. \\
+%             \begin{itemize}
+%                 \item Lowers barrier to entry to grid or cloud infrastructure, or single HPC site.
+%                 \item Application experts are able to prove to resource providers that the application will run on the sites execution environment
+%                 \item Easily manages the lifecycle of applications across multiple versions, architectures and configurations
+%                 \item Ensures that once an application is certified, its available on as many sites as possible.
+%                 \item Promotes collaboration between researcher, research software engineer, and infrastructure provider.
+%                     \item A DOI is automatically created for a version hash and deployment with pull requests as authors.
+%             \end{itemize}
         }
 %         \block[roundedcorners=40]{7 Hypotheses of scientific computing}{
 %             \begin{itemize}
@@ -144,30 +151,42 @@
 %
 %             \end{itemize}
 %         }
-         \note[targetoffsetx=-.05\textwidth,targetoffsety=9.5cm,innersep=.4cm,angle=-45,connection]{Zenodo issues a DOI}
+         \note[targetoffsetx=30cm,targetoffsety=12.5cm,innersep=.4cm]{DOI via Zenodo}%,angle=-45,connection]{DOI via Zenodo}
          \block[roundedcorners=40]{CODE-RADE is }{
-             \begin{itemize}
-                 \item \textbf{Cross platform} It builds and test artifacts for an arbitrary set of targets, promoting diversity in computing platforms and ensures proper optimisations and application portability
-                 \item \textbf{Atomic}
-                                 There is fine grained control over dependencies, versions, and targets and relevant actions are taken on each event in the CODE-RADE cycle.
-                                 Relevant action taken on each event of CODE-RADE cycle.
-                  \item \textbf{Community}
-                      No restriction is placed on the applications that can be integrated, anyone is free contribute applications(dev or testing), resource(human or hardware), code review to name a few.
-                  \item \textbf{Automated}
-                                 Heavy reliance on automated agents to reduce bias, lead time, and all communicated via agents in slack channels. This is a \textbf User-driven process.
-             \end{itemize}
+%             \begin{itemize}
+                 \textbf{Cross platform} : It builds and test artifacts for an arbitrary set of targets, promoting diversity in computing platforms and ensures proper optimisations and application portability \\
+                 \textbf{Atomic} :
+                                 There is fine grained control over dependencies, versions, and targets and relevant actions are taken on each event in the CODE-RADE cycle. \\
+                                 Relevant action taken on each event of CODE-RADE cycle. \\
+                  \textbf{Community} :
+                      No restriction is placed on the applications that can be integrated, anyone is free contribute applications(dev or testing), resource(human or hardware), code review to name a few. \\
+                  \textbf{Automated} :
+                                 Heavy reliance on automated agents to reduce bias, lead time, and all communicated via agents in slack channels. This is a \textbf User-driven process. \\
+%             \end{itemize}
 
          }
-         \column{0.5}
-         \block[roundedcorners=40]{Workflow}{
-           \center\includegraphics[scale=1]{img/code-rade-jenkins-magic.png}
+         \block[roundedcorners=40]{Technology}{
+             \begin{itemize}
+                 \item All builds are inside docker containers so a user could reproduce the constant integration environment locally to test themselves
+                 \item All docker images are publicly available at quay.io/ARROC
+                 \item releases get a doi, authors are submitters and PR
+                     \item build scripts reside at github.com/SouthAfricaDigitalScience
+             \end{itemize}
+        }
+         \column{0.25}
+         \block[roundedcorners=40]{CODE-RADE Actors}{
+
          }
-               \note[targetoffsetx=30cm, targetoffsety=5cm,rotate=1,angle=270,radius=8cm,width=.15\textwidth,innersep=.4cm]{                                                                     
-                         At this point the hash and cvmfs release\\
-                         are packaged into a DOI and the pull requesters are listed as authors.                                                                                             
-                                  } 
-         \begin{subcolumns}
-         \subcolumn{0.5}
+
+         \block[roundedcorners=40]{Workflow}{
+           \center\includegraphics[scale=0.75]{img/code-rade-jenkins-magic.png}
+         }
+         %      \note[targetoffsetx=30cm, targetoffsety=5cm,rotate=1,angle=270,radius=8cm,width=.15\textwidth,innersep=.4cm]{                                                                     
+         %                At this point the hash and cvmfs release\\
+         %                are packaged into a DOI and the pull requesters are listed as authors.                                                                                             
+         %                         } 
+%         \begin{subcolumns}
+%         \subcolumn{0.5}
          \block[roundedcorners=40]{Achitecture}{
              \begin{itemize}
                      \item Components
@@ -192,26 +211,26 @@
                  \begin{itemize}
                     \item Architecture x86\_64, ARM, etc.
                     \item Operating System RHEL Ubuntu, SLES
-                    \item site specific - an axis encapsulating the special nature of a site, its interconnects, compiler, local libraries, and a catch all option of generic.
+                    \item Site specific - an axis encapsulating the special nature of a site, its interconnects, compiler, local libraries, and a catch all option of generic.
                  \end{itemize} 
                      This can be seen in the directory structure of an application \\
 /cvmfs/code-rade.africa-grid.org/generic/centos7/x86\_64/gcc/6.3.0
              \end{itemize}
         }
-             \subcolumn{0.5}
+ %            \subcolumn{0.5}
 
-         \block[roundedcorners=40]{Technology}{
-             \begin{itemize}
-                 \item docker
-                 \item quay.io
-                 \item persistant storage
-                 \item releases get a doi, authors are submitters and PR
-             \end{itemize}
-        }
+         \column{.25}
          \block[roundedcorners=40]{Where can all this can run}{
-             %  \includegraphics{}
+             University of Free State, University of Cape Town, University of Witwatersrand, Center for High Performance Computing,
+             University of Johannesburg, Morocan National Grid, Algerian Regional Network, Zewail City of Science and Technology Egypt, and anywhere
+             else prepared to mount the cvmfs repository.
+             \center{\includegraphics[scale=0.5]{img/SANReN_2016.png}
+             \includegraphics[scale=0.4]{img/africa-working.png}}
          }
-         \end{subcolumns}
+         \block[roundedcorners=40]{Configuration matrix}{
+             each os , each arch, each version of dependencies.
+         }
+  %       \end{subcolumns}
    %  \end{columns}
 
      % map of whereit can be run (grid sites)
@@ -219,26 +238,26 @@
 % todo and next features
 
      %\begin{columns}%blocks will be placed into columns
-         \column{.25}
 
          \block[roundedcorners=40]{Repositories}{
              \begin{itemize}
-                 \item I
+                 \item list of software
              \end{itemize}
         }
          \block[roundedcorners=40]{Repository Layout}{
              \small\lstinputlisting{examplemodule}
          }
-         \block[roundedcorners=40]{Fermionic Molecular Dynamics}{
-               \begin{itemize}
-                   \item \textbf{Problem Area} Nuclear physics
-                   \item \textbf{Integration Time} 21 hours no prior experience
-                       \begin{itemize}
-                               \item github.com/SouthAfricaDigitalScience/FMD-codes-from-T.Neff-/
-                                   \item ci.sagrid.ac.za/view/All/job/Fermionic-Molecular-Dynamics-deploy
-                       \end{itemize}
-               \end{itemize}
-         }
+         \column{0.25}
+%         \block[roundedcorners=40]{Fermionic Molecular Dynamics}{
+%               \begin{itemize}
+%                   \item \textbf{Problem Area} Nuclear physics
+%                   \item \textbf{Integration Time} 21 hours no prior experience
+%                       \begin{itemize}
+%                               \item github.com/SouthAfricaDigitalScience/FMD-codes-from-T.Neff-/
+%                                   \item ci.sagrid.ac.za/view/All/job/Fermionic-Molecular-Dynamics-deploy
+%                       \end{itemize}
+%               \end{itemize}
+%         }
          \block[roundedcorners=40]{Reproducibility}{
             There are two kinds of reproducibility
             \begin{itemize}
@@ -254,17 +273,41 @@
                      \end{enumerate}
              \end{itemize}
         }
+    
+         \block[roundedcorners=40]{Summary}{
+             We have built a cross-platform, automated system for integration and delivery of applications that :
+             \begin{itemize}
+                 \item Deliver functional, tested, reproducible software to your site
+                     \item Ease the communication blocks in collaborative work
+                     \item Can recognise and reward the work of research software engineers.
+             \end{itemize}
+        }
      \end{columns}
-     
+    \begin{columns}
      \vspace{2cm}
+        \column{0.5}
      \block[roundedcorners=40]{Acknowledgements}{\vspace{2em}
      %\block[titleoffsety=-1cm,bodyoffsety=-1cm]{Sample document}{\vspace{2em}
    \includegraphics[scale=0.1]{img/UCTlogo.png}  
-   \raisebox{-1cm}{\includegraphics[scale=0.15]{img/UFSLogo.jpg}}
+   \raisebox{0cm}{\includegraphics[scale=0.15]{img/UFSLogo.jpg}}
+%    \raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
+    \raisebox{-1cm}{\includegraphics[scale=0.25]{img/CSIRlogo.jpg}}
+    \raisebox{0cm}{\includegraphics[scale=0.2]{img/SANCG_logoTransparent-cropped.png}}
+    \raisebox{0cm}{\includegraphics[scale=0.15]{img/chpclogo.png}}
+    \raisebox{0cm}{\includegraphics[scale=1]{img/magrid.png}}
+    \raisebox{0cm}{\includegraphics[scale=1]{img/arn.png}}
+    \raisebox{0cm}{\includegraphics[scale=1]{img/zc.png}}
    \center Feedback and discussion at discourse.sci-gaia.eu
  %  \begin{flushright}\includegraphics[scale=0.25]{img/SANCG_logoTransparent-cropped.png}\end{flushright}
      }
-
+        \column{0.5}
+     \block[roundedcorners=40]{Further Information}{\vspace{2em}
+        \textcolor{blue}{github.com/AAROC/CODE-RADE}\\
+        \textcolor{blue}{www.africa-grid.org/CODE-RADE}\\
+        \textcolor{blue}{www.africa-grid.org/cvmfs}\\
+        \textcolor{blue}{www.africa-grid.org/applications}\\
+        }
+    \end{columns}
  \end{document}
 
 

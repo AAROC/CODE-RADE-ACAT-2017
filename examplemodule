@@ -4,5 +4,6 @@ module use /cvmfs/code-rade.africa-grid.org/modules/libraries
 module use /cvmfs/code-rade.africa-grid.org/modules/hep  
 module use /cvmfs/code-rade.africa-grid.org/modules/astronomy  
 module use /cvmfs/code-rade.africa-grid.org/modules/bioinformatics
+module add gcc/6.3.0
 which g++
-/cvmfs/code-rade.africa-grid.org/generic/centos7/x86\_64/gcc/6.3.0/bin/g++  
+/cvmfs/code-rade.africa-grid.org/generic/centos7/x86_64/gcc/6.3.0/bin/g++  
