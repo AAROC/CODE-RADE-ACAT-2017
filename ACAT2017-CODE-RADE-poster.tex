@@ -138,7 +138,7 @@
 %                 \item Promotes collaboration between researcher, research software engineer, and infrastructure provider.
 %                     \item A DOI is automatically created for a version hash and deployment with pull requests as authors.
 %             \end{itemize}
-        }
+  %      }
 %         \block[roundedcorners=40]{7 Hypotheses of scientific computing}{
 %             \begin{itemize}
 %                 \item It always comes down to an application
@@ -151,20 +151,22 @@
 %
 %             \end{itemize}
 %         }
-         \note[targetoffsetx=30cm,targetoffsety=12.5cm,innersep=.4cm]{DOI via Zenodo}%,angle=-45,connection]{DOI via Zenodo}
-         \block[roundedcorners=40]{CODE-RADE is }{
-%             \begin{itemize}
-                 \textbf{Cross platform} : It builds and test artifacts for an arbitrary set of targets, promoting diversity in computing platforms and ensures proper optimisations and application portability \\
-                 \textbf{Atomic} :
+   %      \block[roundedcorners=40]{CODE-RADE is }{
+\newline
+         CODE-RADE has 4 principles :
+         \begin{itemize}
+                 \item \textbf{Cross platform} : It builds and test artifacts for an arbitrary set of targets, promoting diversity in computing platforms and ensures proper optimisations and application portability 
+                \item \textbf{Atomic} :
                                  There is fine grained control over dependencies, versions, and targets and relevant actions are taken on each event in the CODE-RADE cycle. \\
-                                 Relevant action taken on each event of CODE-RADE cycle. \\
-                  \textbf{Community} :
-                      No restriction is placed on the applications that can be integrated, anyone is free contribute applications(dev or testing), resource(human or hardware), code review to name a few. \\
-                  \textbf{Automated} :
-                                 Heavy reliance on automated agents to reduce bias, lead time, and all communicated via agents in slack channels. This is a \textbf User-driven process. \\
-%             \end{itemize}
+                                 Relevant action taken on each event of CODE-RADE cycle. 
+                  \item \textbf{Community} :
+                      No restriction is placed on the applications that can be integrated, anyone is free contribute applications(dev or testing), resource(human or hardware), code review to name a few. 
+                  \item \textbf{Automated} :
+                                 Heavy reliance on automated agents to reduce bias, lead time, and all communicated via agents in slack channels. This is a \textbf User-driven process. 
+             \end{itemize}
 
          }
+         \note[targetoffsetx=30cm,targetoffsety=12.5cm,innersep=.4cm]{DOI via Zenodo}%,angle=-45,connection]{DOI via Zenodo}
          \block[roundedcorners=40]{Technology}{
              \begin{itemize}
                  \item All builds are inside docker containers so a user could reproduce the constant integration environment locally to test themselves
@@ -294,9 +296,9 @@
     \raisebox{-1cm}{\includegraphics[scale=0.25]{img/CSIRlogo.jpg}}
     \raisebox{0cm}{\includegraphics[scale=0.2]{img/SANCG_logoTransparent-cropped.png}}
     \raisebox{0cm}{\includegraphics[scale=0.15]{img/chpclogo.png}}
-    \raisebox{0cm}{\includegraphics[scale=1]{img/magrid.png}}
-    \raisebox{0cm}{\includegraphics[scale=1]{img/arn.png}}
-    \raisebox{0cm}{\includegraphics[scale=1]{img/zc.png}}
+    \raisebox{0cm}{\includegraphics[scale=1.52]{img/magrid.png}}
+    \raisebox{0cm}{\includegraphics[scale=1.52]{img/arn.png}}
+    \raisebox{0cm}{\includegraphics[scale=1.52]{img/zc.png}}
    \center Feedback and discussion at discourse.sci-gaia.eu
  %  \begin{flushright}\includegraphics[scale=0.25]{img/SANCG_logoTransparent-cropped.png}\end{flushright}
      }
