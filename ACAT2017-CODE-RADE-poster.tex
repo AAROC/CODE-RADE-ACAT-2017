@@ -20,7 +20,7 @@
 %% and version 2.0 or later is part of all distributions of
 %% LaTeX version 2013/12/01 or later.
 %% 
- \documentclass[17pt, a0paper, landscape, margin=0mm, innermargin=15mm,
+ \documentclass[20pt, a0paper, landscape, margin=0mm, innermargin=15mm,
      blockverticalspace=10mm, colspace=5mm, subcolspace=8mm]{tikzposter} %Default values for poster format options.
 
  \tikzposterlatexaffectionproofon %shows small comment on how the poster was made at bottom of poster
@@ -51,9 +51,10 @@
 \titlegraphic{
     \raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
     \hspace{1cm}\raisebox{-1cm}{\includegraphics[scale=0.25]{img/CSIRlogo.jpg}}
-    \hfill
+    \hspace{55cm}%\hfill
     \hspace{1cm}\raisebox{-2cm}{\includegraphics[scale=0.125]{img/UCTlogo.png}}
-    \raisebox{0cm}{\includegraphics[scale=0.2]{img/SANCG_logoTransparent-cropped.png}}
+    \raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
+    %\raisebox{0cm}{\includegraphics[scale=0.2]{img/SANCG_logoTransparent-cropped.png}}
 }
  % -- PREDEFINED THEMES ---------------------- %
  % Choose LAYOUT:  Default, Basic, Rays, Simple, Envelope, Wave, Board, Autumn, Desert,
@@ -108,52 +109,19 @@
 
      \begin{columns}%blocks will be placed into columns
          \column{.25}
-         \block[roundedcorners=40]{The problem CODE-RADE solves}{
-             \center{The researcher is faced with a paradox.}\\
-               %  \begin{wrapfigure}[10]{r}{0.25\linewidth}
-               %      \begin{tikzfigure}[caption for legoparadox]
-                %   \begin{tikzpicture}[ remember picture,overlay]
-                %       \node[at=(current page.center),opacity=0.3]{
+         \block[roundedcorners=40]{Introduction}{
+             \textcolor{red}{\textbf C}ontinuous \textcolor{red}{\textbf I}ntegration and \textcolor{red}{\textbf D}elivery of \textcolor{red}{\textbf R}esearch \textcolor{red}{\textbf A}pplications in a \textcolor{red}{\textbf D}istributed \textcolor{red}{\textbf E}nvironment (CODE-RADE).
+             The researcher is faced with a paradox.  There is a large amount of computing resources available, and a rich, well maintained, interoperable infrstructure of services \textbf{however} getting applictions onto it requires far too much effort.\\
                   \center\includegraphics[scale=.5]{img/legoparadox.png}\\
-                    
-               %};
-               %    \end{tikzpicture}
-               %      \end{tikzfigure}
-               %   \end{wrapfigure}
-                     There is a huge amount of computing resources available, and a rich, well maintained, interoperable infrstructure of services \textbf{however} \\
-             Getting applictions onto it requires far too much effort.
-         }         
-         \block[roundedcorners=40]{CODE-RADE solves this by }{
-                  Lowering the barrier to entry to grid or cloud infrastructure, or single HPC site. 
+         
+             CODE-RADE solves this by lowering the barrier to entry to grid or cloud infrastructure, or single HPC site. 
                   Application experts are then able to prove to resource providers that the application will run on the sites execution environment. 
-                  Easily manages the lifecycle of applications across multiple versions, architectures and configurations \\
-                  Ensures that once an application is certified, its available on as many sites as possible. \\
-                  Promotes collaboration between researcher, research software engineer, and infrastructure provider. \\
-                  A DOI is automatically created for a successfully tested git hash and deployment with pull requests as authors. \\
-%             \begin{itemize}
-%                 \item Lowers barrier to entry to grid or cloud infrastructure, or single HPC site.
-%                 \item Application experts are able to prove to resource providers that the application will run on the sites execution environment
-%                 \item Easily manages the lifecycle of applications across multiple versions, architectures and configurations
-%                 \item Ensures that once an application is certified, its available on as many sites as possible.
-%                 \item Promotes collaboration between researcher, research software engineer, and infrastructure provider.
-%                     \item A DOI is automatically created for a version hash and deployment with pull requests as authors.
-%             \end{itemize}
-  %      }
-%         \block[roundedcorners=40]{7 Hypotheses of scientific computing}{
-%             \begin{itemize}
-%                 \item It always comes down to an application
-%                 \item No software is an island
-%                 \item Applications require environments.
-%                 \item There are multiple environments
-%                 \item Solutions decay 
-%                 \item Remove humans
-%                 \item Stuff is not hard, leverage what is around
-%
-%             \end{itemize}
-%         }
-   %      \block[roundedcorners=40]{CODE-RADE is }{
-\newline
-         CODE-RADE has 4 principles :
+                  It very importantly allows easy  managing the lifecycle of applications across multiple versions, architectures and configurations. 
+                  This ensures that once an application is certified, its available on as many sites as possible, and verified to work.
+                  This has the knock on effect of promoting collaboration between researcher, research software engineer, and infrastructure providers. 
+                  The people doing the work get citeable work as a DOI is created for a verified, via internal project peer review, of a cvmfs release, that is tied the git hashes sitting in github. 
+         \vspace{2cm}\\
+         CODE-RADE has 4 principles:
          \begin{itemize}
                  \item \textbf{Cross platform} : It builds and test artifacts for an arbitrary set of targets, promoting diversity in computing platforms and ensures proper optimisations and application portability 
                 \item \textbf{Atomic} :
@@ -166,7 +134,7 @@
              \end{itemize}
 
          }
-         \note[targetoffsetx=30cm,targetoffsety=12.5cm,innersep=.4cm]{DOI via Zenodo}%,angle=-45,connection]{DOI via Zenodo}
+         \note[targetoffsetx=30cm,targetoffsety=12.5cm,innersep=.4cm]{After review, DOI is issued via Zenodo}%,angle=-45,connection]{DOI via Zenodo}
          \block[roundedcorners=40]{Technology}{
              \begin{itemize}
                  \item All builds are inside docker containers so a user could reproduce the constant integration environment locally to test themselves
@@ -175,13 +143,9 @@
                      \item build scripts reside at github.com/SouthAfricaDigitalScience
              \end{itemize}
         }
-         \column{0.25}
-         \block[roundedcorners=40]{CODE-RADE Actors}{
-
-         }
-
+         \column{0.5}
          \block[roundedcorners=40]{Workflow}{
-           \center\includegraphics[scale=0.75]{img/code-rade-jenkins-magic.png}
+           \center\includegraphics[scale=1]{img/code-rade-jenkins-magic.png}
          }
          %      \note[targetoffsetx=30cm, targetoffsety=5cm,rotate=1,angle=270,radius=8cm,width=.15\textwidth,innersep=.4cm]{                                                                     
          %                At this point the hash and cvmfs release\\
@@ -221,7 +185,7 @@
         }
  %            \subcolumn{0.5}
 
-         \column{.25}
+         %\column{.25}
          \block[roundedcorners=40]{Where can all this can run}{
              University of Free State, University of Cape Town, University of Witwatersrand, Center for High Performance Computing,
              University of Johannesburg, Morocan National Grid, Algerian Regional Network, Zewail City of Science and Technology Egypt, and anywhere
