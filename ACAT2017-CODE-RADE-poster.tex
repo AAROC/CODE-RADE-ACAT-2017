@@ -20,7 +20,7 @@
 %% and version 2.0 or later is part of all distributions of
 %% LaTeX version 2013/12/01 or later.
 %% 
- \documentclass[20pt, a0paper, landscape, margin=0mm, innermargin=15mm,
+ \documentclass[17pt, a0paper, landscape, margin=0mm, innermargin=15mm,
      blockverticalspace=10mm, colspace=5mm, subcolspace=8mm]{tikzposter} %Default values for poster format options.
 
  \tikzposterlatexaffectionproofon %shows small comment on how the poster was made at bottom of poster
@@ -108,13 +108,13 @@
 % todo and next features
 
      \begin{columns}%blocks will be placed into columns
-         \column{.25}
+         \column{.333}
          \block[roundedcorners=40]{Introduction}{
-             \textcolor{red}{\textbf C}ontinuous \textcolor{red}{\textbf I}ntegration and \textcolor{red}{\textbf D}elivery of \textcolor{red}{\textbf R}esearch \textcolor{red}{\textbf A}pplications in a \textcolor{red}{\textbf D}istributed \textcolor{red}{\textbf E}nvironment (CODE-RADE).
+             \textcolor{red}{\textbf CO}ntinuous Integration and \textcolor{red}{\textbf DE}livery of \textcolor{red}{\textbf R}esearch \textcolor{red}{\textbf A}pplications in a \textcolor{red}{\textbf D}istributed \textcolor{red}{\textbf E}nvironment (CODE-RADE).
              The researcher is faced with a paradox.  There is a large amount of computing resources available, and a rich, well maintained, interoperable infrstructure of services \textbf{however} getting applictions onto it requires far too much effort.\\
                   \center\includegraphics[scale=.5]{img/legoparadox.png}\\
          
-             CODE-RADE solves this by lowering the barrier to entry to grid or cloud infrastructure, or single HPC site. 
+             CODE-RADE solves this by lowering the barrier to entry to grid or cloud infrastructure, or a single HPC site. 
                   Application experts are then able to prove to resource providers that the application will run on the sites execution environment. 
                   It very importantly allows easy  managing the lifecycle of applications across multiple versions, architectures and configurations. 
                   This ensures that once an application is certified, its available on as many sites as possible, and verified to work.
@@ -130,36 +130,30 @@
                   \item \textbf{Community} :
                       No restriction is placed on the applications that can be integrated, anyone is free contribute applications(dev or testing), resource(human or hardware), code review to name a few. 
                   \item \textbf{Automated} :
-                                 Heavy reliance on automated agents to reduce bias, lead time, and all communicated via agents in slack channels. This is a \textbf User-driven process. 
+                      Heavy reliance on automated agents to reduce bias, lead time, and all communicated via agents in slack channels. This is a \textbf{User}-driven process. 
              \end{itemize}
 
          }
-         \note[targetoffsetx=30cm,targetoffsety=12.5cm,innersep=.4cm]{After review, DOI is issued via Zenodo}%,angle=-45,connection]{DOI via Zenodo}
+        % \note[targetoffsetx=30cm,targetoffsety=12.5cm,innersep=.4cm]{After review, DOI is issued via Zenodo}%,angle=-45,connection]{DOI via Zenodo}
+
+
          \block[roundedcorners=40]{Technology}{
+         We glue together a 1. glue together github, slack, jenkins , jarvis and make it publicly available to the users.
+         2. build failure trigger
              \begin{itemize}
                  \item All builds are inside docker containers so a user could reproduce the constant integration environment locally to test themselves
-                 \item All docker images are publicly available at quay.io/ARROC
+                 \item All docker images are publicly available at quay.io/AAROC
                  \item releases get a doi, authors are submitters and PR
                      \item build scripts reside at github.com/SouthAfricaDigitalScience
              \end{itemize}
-        }
-         \column{0.5}
-         \block[roundedcorners=40]{Workflow}{
-           \center\includegraphics[scale=1]{img/code-rade-jenkins-magic.png}
-         }
-         %      \note[targetoffsetx=30cm, targetoffsety=5cm,rotate=1,angle=270,radius=8cm,width=.15\textwidth,innersep=.4cm]{                                                                     
-         %                At this point the hash and cvmfs release\\
-         %                are packaged into a DOI and the pull requesters are listed as authors.                                                                                             
-         %                         } 
-%         \begin{subcolumns}
-%         \subcolumn{0.5}
-         \block[roundedcorners=40]{Achitecture}{
              \begin{itemize}
                      \item Components
                            \begin{itemize}
                                \item Version control at Github \textcolor{blue}{github.com/SouthAfricaDigitalScience}
                                \item Continuous Integration (Jenkins and Jarvis) \textcolor{blue}{ci.sagrid.ac.za}
-                               \item Automated Delivery (CVMFS) /cvmfs/code-rade.africa-grid
+                               \item Automated Delivery from successful Jenkins buld to (CVMFS) /cvmfs/code-rade.africa-grid
+                               \item if build fails, issue generated in github.
+                               \item Numerous bots to tie the pieces together.
                            \end{itemize}
                      \item Workflow 
                          \begin{itemize}
@@ -170,7 +164,29 @@
              \end{itemize}
 
          }
-         \block[roundedcorners=40]{Target Matrix}{
+         \column{0.333}
+         \block[roundedcorners=40]{Workflow}{
+             % 3 scripts build, check, deploy 
+             % github pull request triggers a build for all versions of that application.
+             % if it fails a github issue is instantiated for each version being built.
+             % if it complete to deploy script, then its shipped to cvmfs.
+             % each step is relayed to a slack chanel to its specific channel or to generic code-rade channel for deployment.
+             % operators get to review and if all happy a doi is issued against the version.
+             
+           \center\includegraphics[scale=0.8]{img/code-rade-jenkins-magic.png}
+         }
+         \block[roundedcorners=40]{Deployment}{
+             
+           \center\includegraphics[scale=0.75]{img/Jenkinsworkflowschematic.png}
+         }
+         %      \note[targetoffsetx=30cm, targetoffsety=5cm,rotate=1,angle=270,radius=8cm,width=.15\textwidth,innersep=.4cm]{                                                                     
+         %                At this point the hash and cvmfs release\\
+         %                are packaged into a DOI and the pull requesters are listed as authors.                                                                                             
+         %                         } 
+%         \begin{subcolumns}
+%         \subcolumn{0.5}
+         \block[roundedcorners=40]{Architecture}{
+             We build the full stack assuming nothing but the base operating system, similar to many hpc sites. We are therefore not dependent on anything local but an operational operating system.
              \begin{itemize}
                  \item One can add as many target configurations to the build matrix as can be reliably simulated.
                  \item Currently we have defined three axes :
@@ -184,18 +200,21 @@
              \end{itemize}
         }
  %            \subcolumn{0.5}
+%         \block[roundedcorners=40]{Dependency graph}{
+%             \includegraphics[scale=0.2]{img/code-rade-graph.png}
+%         }
 
-         %\column{.25}
+         \column{.333}
          \block[roundedcorners=40]{Where can all this can run}{
              University of Free State, University of Cape Town, University of Witwatersrand, Center for High Performance Computing,
              University of Johannesburg, Morocan National Grid, Algerian Regional Network, Zewail City of Science and Technology Egypt, and anywhere
              else prepared to mount the cvmfs repository.
-             \center{\includegraphics[scale=0.5]{img/SANReN_2016.png}
-             \includegraphics[scale=0.4]{img/africa-working.png}}
+             \center{\includegraphics[scale=0.8]{img/SANReN_2016.png}
+             \includegraphics[scale=0.6]{img/africa-working.png}}
          }
-         \block[roundedcorners=40]{Configuration matrix}{
-             each os , each arch, each version of dependencies.
-         }
+%         \block[roundedcorners=40]{Configuration matrix}{
+%             each os , each arch, each version of dependencies.
+%        }
   %       \end{subcolumns}
    %  \end{columns}
 
@@ -206,14 +225,19 @@
      %\begin{columns}%blocks will be placed into columns
 
          \block[roundedcorners=40]{Repositories}{
+             Numerous pieces of software have been incorporated. The versions are very much dependent on what people want to run. We cover all fields from bioinformatics, astronomy, physics, 
              \begin{itemize}
-                 \item list of software
+                 \item gcc 4.9 5.3 6.3
+                 \item geant4 9.6 10.1 10.3
+                 \item root 5.34 6.08 6.10
+                 \item Fermionic Molecular Dynamics
+                 \item  
              \end{itemize}
+             The full listing is availabe of ci.sagrid.ac.za or www.africa-grid.org
         }
-         \block[roundedcorners=40]{Repository Layout}{
-             \small\lstinputlisting{examplemodule}
-         }
-         \column{0.25}
+%         \block[roundedcorners=40]{Repository Layout}{
+%             \small\lstinputlisting{examplemodule}
+%         }
 %         \block[roundedcorners=40]{Fermionic Molecular Dynamics}{
 %               \begin{itemize}
 %                   \item \textbf{Problem Area} Nuclear physics
@@ -225,18 +249,13 @@
 %               \end{itemize}
 %         }
          \block[roundedcorners=40]{Reproducibility}{
-            There are two kinds of reproducibility
             \begin{itemize}
-                 \item Reproducing scientific results
-                     \begin{enumerate}
-                         \item One should be able reproduce \textbf{exact} workflow with the \textbf{exact expression} of the application
-                         \item The entire repository history is kept, allowing one to relate \textbf{each successful build} to a CVMFS repository version.
-                     \end{enumerate}
-                 \item Reproducing the executable application.
-                     \begin{enumerate}
-                         \item The \textbf{expression} of the application should be reproducible by different build systems
-                         \item The means for expressing the application should be citable. This is done via Zenodo.
-                     \end{enumerate}
+                 \item Reproducing scientific results. \\
+                         One should be able reproduce \textbf{exact} workflow with the \textbf{exact expression} of the application
+                         The entire repository history is kept, allowing one to relate \textbf{each successful build} to a CVMFS repository version.
+                 \item Reproducing the executable application.\\
+                         The \textbf{expression} of the application should be reproducible by different build systems
+                          The means for expressing the application should be citable. We this via Zenodo.
              \end{itemize}
         }
     
@@ -254,24 +273,31 @@
         \column{0.5}
      \block[roundedcorners=40]{Acknowledgements}{\vspace{2em}
      %\block[titleoffsety=-1cm,bodyoffsety=-1cm]{Sample document}{\vspace{2em}
-   \includegraphics[scale=0.1]{img/UCTlogo.png}  
-   \raisebox{0cm}{\includegraphics[scale=0.15]{img/UFSLogo.jpg}}
+        \raisebox{30cm}{\includegraphics[scale=0.1]{img/UCTlogo.png}}
+   \raisebox{30cm}{\includegraphics[scale=0.15]{img/UFSLogo.jpg}}
 %    \raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
-    \raisebox{-1cm}{\includegraphics[scale=0.25]{img/CSIRlogo.jpg}}
-    \raisebox{0cm}{\includegraphics[scale=0.2]{img/SANCG_logoTransparent-cropped.png}}
-    \raisebox{0cm}{\includegraphics[scale=0.15]{img/chpclogo.png}}
-    \raisebox{0cm}{\includegraphics[scale=1.52]{img/magrid.png}}
-    \raisebox{0cm}{\includegraphics[scale=1.52]{img/arn.png}}
-    \raisebox{0cm}{\includegraphics[scale=1.52]{img/zc.png}}
-   \center Feedback and discussion at discourse.sci-gaia.eu
+    \raisebox{30cm}{\includegraphics[scale=0.2]{img/CSIRlogo.jpg}}
+    \raisebox{30cm}{\includegraphics[scale=0.1]{img/SANCG_logoTransparent-cropped.png}}
+    \raisebox{30cm}{\includegraphics[scale=0.1]{img/chpclogo.png}}
+    \raisebox{30cm}{\includegraphics[scale=1.2]{img/magrid.png}}
+    \raisebox{30cm}{\includegraphics[scale=1.2]{img/arn.png}}
+    \raisebox{30cm}{\includegraphics[scale=1.2]{img/zc.png}}
+   %\includegraphics[scale=0.1]{img/UCTlogo.png}  
+%   \raisebox{0cm}{\includegraphics[scale=0.15]{img/UFSLogo.jpg}}
+%%    \raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
+%    \raisebox{-1cm}{\includegraphics[scale=0.25]{img/CSIRlogo.jpg}}
+%    \raisebox{0cm}{\includegraphics[scale=0.2]{img/SANCG_logoTransparent-cropped.png}}
+%    \raisebox{0cm}{\includegraphics[scale=0.15]{img/chpclogo.png}}
+%    \raisebox{0cm}{\includegraphics[scale=1.52]{img/magrid.png}}
+%    \raisebox{0cm}{\includegraphics[scale=1.52]{img/arn.png}}
+%    \raisebox{0cm}{\includegraphics[scale=1.52]{img/zc.png}}
+%   \center Feedback and discussion at discourse.sci-gaia.eu
  %  \begin{flushright}\includegraphics[scale=0.25]{img/SANCG_logoTransparent-cropped.png}\end{flushright}
      }
         \column{0.5}
      \block[roundedcorners=40]{Further Information}{\vspace{2em}
-        \textcolor{blue}{github.com/AAROC/CODE-RADE}\\
-        \textcolor{blue}{www.africa-grid.org/CODE-RADE}\\
-        \textcolor{blue}{www.africa-grid.org/cvmfs}\\
-        \textcolor{blue}{www.africa-grid.org/applications}\\
+        \textcolor{blue}{\textbf{github.com/AAROC/CODE-RADE}}\\
+        \textcolor{blue}{\textbf{www.africa-grid.org/CODE-RADE}}\\
         }
     \end{columns}
  \end{document}
