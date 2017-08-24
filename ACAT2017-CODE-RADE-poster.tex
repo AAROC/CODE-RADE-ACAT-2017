@@ -110,7 +110,7 @@
          \column{.333}
          \block[roundedcorners=40]{Introduction}{
              \textcolor{red}{\textbf CO}ntinuous Integration and \textcolor{red}{\textbf DE}livery of \textcolor{red}{\textbf R}esearch \textcolor{red}{\textbf A}pplications in a \textcolor{red}{\textbf D}istributed \textcolor{red}{\textbf E}nvironment (CODE-RADE).
-             The researcher is faced with a paradox.  There is a large amount of computing resources available, and a rich, well maintained, interoperable infrstructure of services \textbf{however} getting applictions onto it requires far too much effort.\\
+             The researcher is faced with a paradox.  There is a large amount of computing resources available, and a rich, well maintained, interoperable infrastructure of services \textbf{however} getting applications onto it requires far too much effort.\\
                   \center\includegraphics[scale=.5]{img/legoparadox.png}\\
          
              CODE-RADE solves this by lowering the barrier to entry to grid or cloud infrastructure, or a single HPC site. 
@@ -118,7 +118,7 @@
                   It very importantly allows easy  managing the lifecycle of applications across multiple versions, architectures and configurations. 
                   This ensures that once an application is certified, its available on as many sites as possible, and verified to work.
                   This has the knock on effect of promoting collaboration between researcher, research software engineer, and infrastructure providers. 
-                  The people doing the work get citeable work as a DOI is created for a verified, peer reviewed, cvmfs release that is tied the git hashes. 
+                  The people doing the work get citeable work as a DOI is created for a verified, peer reviewed, CVMFS release that is tied the git hashes. 
          \vspace{0.5cm}\\
          CODE-RADE has 4 principles:
          \begin{itemize}
@@ -127,7 +127,7 @@
                                  There is fine grained control over dependencies, versions, and targets and relevant actions are taken on each event in the CODE-RADE cycle. \\
                                  All these events are communicated to all willing listeners via slack.
                   \item \textbf{Community} :
-                      No restriction is placed on the applications that can be integrated, anyone is free contributie; applications (dev or testing), resources(human or hardware), code review, etc. 
+                      No restriction is placed on the applications that can be integrated, anyone is free contribute; applications (dev or testing), resources(human or hardware), code review, etc. 
                   \item \textbf{Automated} :
                       Heavy reliance on automated agents to reduce bias, lead time. Humans are removed as far as possible.
              \end{itemize}
@@ -142,7 +142,7 @@
                            \begin{itemize}
                                \item Version control at Github \textcolor{blue}{github.com/SouthAfricaDigitalScience}
                                \item Continuous Integration (Jenkins and Travis) \textcolor{blue}{ci.sagrid.ac.za}
-                               \item Automated Delivery from successful Jenkins buld to (CVMFS) /cvmfs/code-rade.africa-grid
+                               \item Automated Delivery from successful Jenkins build to (CVMFS) /cvmfs/code-rade.africa-grid
                                \item Waffle.io is used to coordinate all human tasks, integrating with slack, and linked to github issues.
                                \item Slack is used extensively for communication via numerous bots to notify on all steps, success/failure/progress.
                                \item Open discussions at \textcolor{blue}{discourse.sci-gaia.eu}
@@ -155,9 +155,9 @@
                                  \item Deliver : Ensure that once the tests pass, the application is available at all sites.
                          \end{itemize}
                  \item All builds are inside docker containers so a user could reproduce the constant integration environment locally to test themselves, or attempt to reproduce someone
-                     elses results using the exact same software.
+                     else's results using the exact same software.
                  \item Docker images are publicly available at quay.io/AAROC
-                 \item Releases get a doi, after review.
+                 \item Releases get a DOI, after review.
              \end{itemize}
 
          }
@@ -177,7 +177,7 @@
              % github pull request triggers a build for all versions of that application.
              % if it fails a github issue is instantiated for each version being built.
              % if it complete to deploy script, then its shipped to cvmfs.
-             % each step is relayed to a slack chanel to its specific channel or to generic code-rade channel for deployment.
+             % each step is relayed to a slack channel to its specific channel or to generic code-rade channel for deployment.
              % operators get to review and if all happy a doi is issued against the version.
              
            \center\includegraphics[scale=0.8]{img/code-rade-jenkins-magic.png}
@@ -199,7 +199,7 @@
                  \item Currently we have defined three axes :
                  \begin{itemize}
                     \item Architecture x86\_64, ARM.
-                    \item Operating System Centos 6,7  Ubuntu 14.04 16.10
+                    \item Operating System CentOS 6,7  Ubuntu 14.04 16.10
                     \item Site specific - an axis encapsulating the special nature of a site, its interconnects, compiler, local libraries, and a catch all option of generic.
                  \end{itemize} 
                      Each application is built for a combination of these dimensions, typically 1x1x4
@@ -216,7 +216,7 @@
          \column{.333}
          \block[roundedcorners=40]{Where can all this can run}{
              University of Free State, University of Cape Town, University of Witwatersrand, Center for High Performance Computing,
-             University of Johannesburg, Morocan National Grid, Algerian Regional Network, Zewail City of Science and Technology Egypt, and anywhere
+             University of Johannesburg, Moroccan National Grid, Algerian Regional Network, Zewail City of Science and Technology Egypt, and anywhere
              else prepared to mount the cvmfs repository. We are also integrated into EGI, via AfricaArabia NGI.
              \center{\includegraphics[scale=0.8]{img/SANReN_2016.png}
              \includegraphics[scale=0.6]{img/africa-working.png}}
@@ -243,7 +243,7 @@
                  \item bioinformatics : clustal-omega  hmmer  oases  velvet  
                  \item chemistry : autodocksuite  gromacs  quantum-espresso
              \end{itemize}
-             The full listing is availabe at both www.africa-grid.org and ci.sagrid.ac.za
+             The full listing is available at both www.africa-grid.org and ci.sagrid.ac.za
         }
 %         \block[roundedcorners=40]{Repository Layout}{
 %             \small\lstinputlisting{examplemodule}
@@ -265,7 +265,7 @@
                          The entire repository history is kept, allowing one to relate \textbf{each successful build} to a CVMFS repository version.
                  \item Reproducing the executable application.\\
                          The \textbf{expression} of the application should be reproducible by different build systems
-                          The means for expressing the application should be citable. We this via Zenodo.
+                          The means for expressing the application should be citeable. We this via Zenodo.
              \end{itemize}
         }
     
