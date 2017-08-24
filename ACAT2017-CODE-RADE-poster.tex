@@ -21,7 +21,7 @@
 %% LaTeX version 2013/12/01 or later.
 %% 
  \documentclass[17pt, a0paper, landscape, margin=0mm, innermargin=15mm,
-     blockverticalspace=10mm, colspace=5mm, subcolspace=8mm]{tikzposter} %Default values for poster format options.
+     blockverticalspace=5mm, colspace=5mm, subcolspace=8mm]{tikzposter} %Default values for poster format options.
 
  \tikzposterlatexaffectionproofon %shows small comment on how the poster was made at bottom of poster
 \usepackage{graphicx}
@@ -40,26 +40,26 @@
  \setlength{\tabcolsep}{2em}
 
  % Title, Author, Institute
- \title{\parbox{0.95\linewidth}{\centering \textbf{CODE-RADE a user centric code delivery system for science}}}
+ \title{\parbox{0.95\linewidth}{\centering \textbf{CODE-RADE\\ a user centric code delivery system for science}}}
  \author{
      \begin{tabular}{cc}
          Sean Murray & Bruce Becker\\
          smurray@csir.co.za & bbecker@csir.co.za
      \end{tabular}
 }
-\institute{CSIR, Meraka. Center for Hight Performance Computing.  University of Cape Town}
+\institute{Center for High Performance Computing. CSIR, Meraka}
 \titlegraphic{
     \raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
+    \hspace{1cm}\raisebox{0cm}{\includegraphics[scale=0.125]{img/chpclogo.png}}
+    \hspace{65cm}%\hfill
     \hspace{1cm}\raisebox{-1cm}{\includegraphics[scale=0.25]{img/CSIRlogo.jpg}}
-    \hspace{55cm}%\hfill
-    \hspace{1cm}\raisebox{-2cm}{\includegraphics[scale=0.125]{img/UCTlogo.png}}
-    \raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
+    \hspace{2cm}\raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
     %\raisebox{0cm}{\includegraphics[scale=0.2]{img/SANCG_logoTransparent-cropped.png}}
 }
  % -- PREDEFINED THEMES ---------------------- %
  % Choose LAYOUT:  Default, Basic, Rays, Simple, Envelope, Wave, Board, Autumn, Desert,
 \usetheme{Rays} % Board, Simple, Wave, Rays.
-\usecolorstyle[colorPalette=BrownBlueOrange]{Envelope}
+\usecolorstyle[colorPalette=BrownBlueOrange]{Rays}
 
 \defineblockstyle{BazBlock}{%
     titlewidthscale=0.8, bodywidthscale=1, titlecenter, 
@@ -87,7 +87,7 @@
     \@titlegraphic \\ [\TP@titlegraphictotitledistance] 
     \centering
     \color{titlefgcolor}
-    {\bfseries \huge \sc \@title \par}
+    {\bfseries \Huge \sc \fontsize{80}{120}\@title \par}
     \vspace*{1em}
     {\LARGE \@author \par}
     \vspace*{1.2em}
@@ -119,18 +119,18 @@
                   It very importantly allows easy  managing the lifecycle of applications across multiple versions, architectures and configurations. 
                   This ensures that once an application is certified, its available on as many sites as possible, and verified to work.
                   This has the knock on effect of promoting collaboration between researcher, research software engineer, and infrastructure providers. 
-                  The people doing the work get citeable work as a DOI is created for a verified, via internal project peer review, of a cvmfs release, that is tied the git hashes sitting in github. 
-         \vspace{2cm}\\
+                  The people doing the work get citeable work as a DOI is created for a verified, peer reviewed, cvmfs release that is tied the git hashes. 
+         \vspace{0.5cm}\\
          CODE-RADE has 4 principles:
          \begin{itemize}
                  \item \textbf{Cross platform} : It builds and test artifacts for an arbitrary set of targets, promoting diversity in computing platforms and ensures proper optimisations and application portability 
                 \item \textbf{Atomic} :
                                  There is fine grained control over dependencies, versions, and targets and relevant actions are taken on each event in the CODE-RADE cycle. \\
-                                 Relevant action taken on each event of CODE-RADE cycle. 
+                                 All these events are communicated to all willing listeners via slack.
                   \item \textbf{Community} :
-                      No restriction is placed on the applications that can be integrated, anyone is free contribute applications(dev or testing), resource(human or hardware), code review to name a few. 
+                      No restriction is placed on the applications that can be integrated, anyone is free contributie; applications (dev or testing), resources(human or hardware), code review, etc. 
                   \item \textbf{Automated} :
-                      Heavy reliance on automated agents to reduce bias, lead time, and all communicated via agents in slack channels. This is a \textbf{User}-driven process. 
+                      Heavy reliance on automated agents to reduce bias, lead time. Humans are removed as far as possible.
              \end{itemize}
 
          }
@@ -138,31 +138,39 @@
 
 
          \block[roundedcorners=40]{Technology}{
-         We glue together a 1. glue together github, slack, jenkins , jarvis and make it publicly available to the users.
-         2. build failure trigger
-             \begin{itemize}
-                 \item All builds are inside docker containers so a user could reproduce the constant integration environment locally to test themselves
-                 \item All docker images are publicly available at quay.io/AAROC
-                 \item releases get a doi, authors are submitters and PR
-                     \item build scripts reside at github.com/SouthAfricaDigitalScience
-             \end{itemize}
              \begin{itemize}
                      \item Components
                            \begin{itemize}
                                \item Version control at Github \textcolor{blue}{github.com/SouthAfricaDigitalScience}
-                               \item Continuous Integration (Jenkins and Jarvis) \textcolor{blue}{ci.sagrid.ac.za}
+                               \item Continuous Integration (Jenkins and Travis) \textcolor{blue}{ci.sagrid.ac.za}
                                \item Automated Delivery from successful Jenkins buld to (CVMFS) /cvmfs/code-rade.africa-grid
-                               \item if build fails, issue generated in github.
-                               \item Numerous bots to tie the pieces together.
+                               \item Waffle.io is used to coordinate all human tasks, integrating with slack, and linked to github issues.
+                               \item Slack is used extensively for communication via numerous bots to notify on all steps, success/failure/progress.
+                               \item Open discussions at \textcolor{blue}{discourse.sci-gaia.eu}
                            \end{itemize}
                      \item Workflow 
+                         Each software package has 3 scripts.
                          \begin{itemize}
                                  \item Build : User and/or expert-defined means to produce executable applications or libraries
                                  \item Test : Infrastructure operator-defined targets provide a means to ensure viability
                                  \item Deliver : Ensure that once the tests pass, the application is available at all sites.
                          \end{itemize}
+                 \item All builds are inside docker containers so a user could reproduce the constant integration environment locally to test themselves, or attempt to reproduce someone
+                     elses results using the exact same software.
+                 \item Docker images are publicly available at quay.io/AAROC
+                 \item Releases get a doi, after review.
              \end{itemize}
 
+         }
+         \block[roundedcorners=40]{Actors}{
+         Researcher
+         \includegraphics[scale=0.05]{img/labtocat.png}
+         Research Software Engineer
+         \includegraphics[scale=0.05]{img/baracktocat.jpg}
+         Infrastructure operations
+         \includegraphics[scale=0.05]{img/octotron.jpg}
+         Automated Agents
+         \includegraphics[scale=0.05]{img/robotcat.png}
          }
          \column{0.333}
          \block[roundedcorners=40]{Workflow}{
@@ -186,17 +194,19 @@
 %         \begin{subcolumns}
 %         \subcolumn{0.5}
          \block[roundedcorners=40]{Architecture}{
-             We build the full stack assuming nothing but the base operating system, similar to many hpc sites. We are therefore not dependent on anything local but an operational operating system.
+             We build the full stack assuming nothing but the base operating system, similar to many hpc sites. We are therefore not dependent on anything local but an operational operating system and our cvmfs mount.
              \begin{itemize}
                  \item One can add as many target configurations to the build matrix as can be reliably simulated.
                  \item Currently we have defined three axes :
                  \begin{itemize}
-                    \item Architecture x86\_64, ARM, etc.
-                    \item Operating System RHEL Ubuntu, SLES
+                    \item Architecture x86\_64, ARM.
+                    \item Operating System Centos 6,7  Ubuntu 14.04 16.10
                     \item Site specific - an axis encapsulating the special nature of a site, its interconnects, compiler, local libraries, and a catch all option of generic.
                  \end{itemize} 
-                     This can be seen in the directory structure of an application \\
-/cvmfs/code-rade.africa-grid.org/generic/centos7/x86\_64/gcc/6.3.0
+                     Each application is built for a combination of these dimensions, typically 1x1x4
+                     With different version of complier, mpi implementations, python versions the matrix of builds and grow rapidly. 
+                     For example NumPy has:\\
+                     1(ARCH)x1(SITE)x4(OS)x4(PYTHON\_VERSION)x3(GCC\_VERSION)x4(NUMPY\_VERSION)=192
              \end{itemize}
         }
  %            \subcolumn{0.5}
@@ -208,7 +218,7 @@
          \block[roundedcorners=40]{Where can all this can run}{
              University of Free State, University of Cape Town, University of Witwatersrand, Center for High Performance Computing,
              University of Johannesburg, Morocan National Grid, Algerian Regional Network, Zewail City of Science and Technology Egypt, and anywhere
-             else prepared to mount the cvmfs repository.
+             else prepared to mount the cvmfs repository. We are also integrated into EGI, via AfricaArabia NGI.
              \center{\includegraphics[scale=0.8]{img/SANReN_2016.png}
              \includegraphics[scale=0.6]{img/africa-working.png}}
          }
@@ -227,13 +237,14 @@
          \block[roundedcorners=40]{Repositories}{
              Numerous pieces of software have been incorporated. The versions are very much dependent on what people want to run. We cover all fields from bioinformatics, astronomy, physics, 
              \begin{itemize}
-                 \item gcc 4.9 5.3 6.3
-                 \item geant4 9.6 10.1 10.3
-                 \item root 5.34 6.08 6.10
-                 \item Fermionic Molecular Dynamics
-                 \item  
+                 \item base software from readline, zlib, pcre.
+                     \item languages/compilers : python gcc 4.9.4 5.4 6.3
+                         \item infrastructure : openpbs, torque.
+                 \item hep : root 5.34 6.08 6.10, fastjet, geant4 9 10.1 10.3, pythia 6 8, Fermionic Molecular Dynamics, herwig, hepmc.
+                 \item bioinformatics : clustal-omega  hmmer  oases  velvet  
+                 \item chemistry : autodocksuite  gromacs  quantum-espresso
              \end{itemize}
-             The full listing is availabe of ci.sagrid.ac.za or www.africa-grid.org
+             The full listing is availabe at both www.africa-grid.org and ci.sagrid.ac.za
         }
 %         \block[roundedcorners=40]{Repository Layout}{
 %             \small\lstinputlisting{examplemodule}
@@ -260,30 +271,31 @@
         }
     
          \block[roundedcorners=40]{Summary}{
-             We have built a cross-platform, automated system for integration and delivery of applications that :
+             Making the best use of computational resources comes down to applications. We have built a cross-platform, automated system for integration and delivery of applications that :
              \begin{itemize}
                  \item Deliver functional, tested, reproducible software to your site
                      \item Ease the communication blocks in collaborative work
-                     \item Can recognise and reward the work of research software engineers.
+                     \item Recognise and reward the work of research software engineers.
+                         \item Depends on only an operating system and cvmfs installed.
              \end{itemize}
         }
      \end{columns}
     \begin{columns}
-     \vspace{2cm}
-        \column{0.5}
-     \block[roundedcorners=40]{Acknowledgements}{\vspace{2em}
+    % \vspace{2cm}
+        \column{0.75}
+     \block[roundedcorners=40]{Acknowledgements}{%\vspace{2em}
      %\block[titleoffsety=-1cm,bodyoffsety=-1cm]{Sample document}{\vspace{2em}
         \raisebox{30cm}{\includegraphics[scale=0.1]{img/UCTlogo.png}}
-   \raisebox{30cm}{\includegraphics[scale=0.15]{img/UFSLogo.jpg}}
+        \hspace{5cm}\raisebox{30cm}{\includegraphics[scale=0.18]{img/UFSLogo.jpg}}
 %    \raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
-    \raisebox{30cm}{\includegraphics[scale=0.2]{img/CSIRlogo.jpg}}
-    \raisebox{30cm}{\includegraphics[scale=0.1]{img/SANCG_logoTransparent-cropped.png}}
-    \raisebox{30cm}{\includegraphics[scale=0.1]{img/chpclogo.png}}
-    \raisebox{30cm}{\includegraphics[scale=1.2]{img/magrid.png}}
-    \raisebox{30cm}{\includegraphics[scale=1.2]{img/arn.png}}
-    \raisebox{30cm}{\includegraphics[scale=1.2]{img/zc.png}}
+        \hspace{5cm}\raisebox{31cm}{\includegraphics[scale=0.2]{img/CSIRlogo.jpg}}
+        \hspace{5cm}\raisebox{30cm}{\includegraphics[scale=0.2]{img/SANCG_logoTransparent-cropped.png}}
+        \hspace{5cm}\raisebox{32cm}{\includegraphics[scale=0.1]{img/chpclogo.png}}
+        \hspace{5cm}\raisebox{32cm}{\includegraphics[scale=1.2]{img/magrid.png}}
+        \hspace{5cm}\raisebox{32cm}{\includegraphics[scale=1.2]{img/arn.png}}
+        \hspace{5cm}\raisebox{32cm}{\includegraphics[scale=1.2]{img/zc.png}}
    %\includegraphics[scale=0.1]{img/UCTlogo.png}  
-%   \raisebox{0cm}{\includegraphics[scale=0.15]{img/UFSLogo.jpg}}
+%   \raisebox{0cm}{\includegraphics[scale=0.12]{img/UFSLogo.jpg}}
 %%    \raisebox{0cm}{\includegraphics[scale=1.5]{img/coderade.png}}
 %    \raisebox{-1cm}{\includegraphics[scale=0.25]{img/CSIRlogo.jpg}}
 %    \raisebox{0cm}{\includegraphics[scale=0.2]{img/SANCG_logoTransparent-cropped.png}}
@@ -294,11 +306,16 @@
 %   \center Feedback and discussion at discourse.sci-gaia.eu
  %  \begin{flushright}\includegraphics[scale=0.25]{img/SANCG_logoTransparent-cropped.png}\end{flushright}
      }
-        \column{0.5}
-     \block[roundedcorners=40]{Further Information}{\vspace{2em}
+        \column{0.25}
+     \block[roundedcorners=40]{Further Information}{%\vspace{2em}
+         \centering{
         \textcolor{blue}{\textbf{github.com/AAROC/CODE-RADE}}\\
-        \textcolor{blue}{\textbf{www.africa-grid.org/CODE-RADE}}\\
-        }
+        africa-arabia-roc.slack.com\\
+        Sean Murray at murrays@cern.ch\\
+        Bruce Becker at bbecker@csir.co.za
+
+    }}
+
     \end{columns}
  \end{document}
 
@@ -307,4 +324,5 @@
 
 \endinput
 %%
+
 %% End of file `tikzposter-example.tex'.
