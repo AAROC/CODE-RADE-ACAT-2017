@@ -43,9 +43,9 @@ attempted to be migrated to another platform whether it be bigger or in another 
 scientists have suffered trying to get their research done. Countless hours have been wasted 
 getting programs to run as opposed to actually doing the science they intended to do.
 
-    It is a long standing problem and irritation trying to get a program to run on
-    computing infrastructure that is not sitting on your desk. The scale and complexity being 
-    propotional to that of the code and the computing system you wish to run on.
+%    It is a long standing problem and irritation trying to get a program to run on
+%    computing infrastructure that is not sitting on your desk. The scale and complexity being 
+%    propotional to that of the code and the computing system you wish to run on.
 
 	\subsection{The paradox of  plentiful computing}
 
@@ -229,7 +229,6 @@ getting programs to run as opposed to actually doing the science they intended t
     which perform the compilation, functional testing and integration into the delivery environment
     respectively. 
     
-% TODO - Add figure of the workflow
 
 Each job, as defined on Jenkins, consists of at least these three tasks. If each passes successfully,
 a job to update the CVMFS repository is triggered, which puts the repository into transaction, pulls
@@ -287,7 +286,7 @@ online in someway. Anyone can contribute applications, resources, code review, t
 where ever their skill sets lie. 
 The entire community can see the build status and reinitiate failed builds via new pull requests.
 After a user updates their git repository, a git pull request is done, a build is executed. 
-The results of the build are publicly viewable, 
+The results of the build are publicly viewable (\url{https://ci.sagrid.ac.za}), 
 errors are viewable by the user doing the pull request (and everybody else), via a full build transcript.
 This can be fixed
 by merely redoing a pull request with what ever changes are required to fix the errors. 
@@ -300,7 +299,7 @@ and is user-driven.
 As an example, failures on jenkins cause issues on github, and the user is then able to fix these at
 their discretion.
 Successful subsequent builds will also close these issues.
-Notifications are sent to relevant slack channels (slack.com) and bots within slack permit actions
+Notifications are sent to relevant slack channels \footnote{See \url{"https://www.slack.com"}} and bots within slack permit actions
 to be taken, for instance postponing issues, reassigning, or closing.
 
 \section{Summary, Conclusion and Further work}
