@@ -123,38 +123,38 @@ getting programs to run as opposed to actually doing the science they intended t
 	\begin{description}
 		\item[Hypothesis 1: Every researcher is an application] \hfill \\
         The core aspect of initial communication between a research infrastructure provider and a
-            researcher is the {\it application}. Every effort is be made to resolve and
-            understand the needs of the researcher and engage with them on
-            technical aspects of the application.
+            researcher is the {\it application}. %Every effort is be made to resolve and
+           % understand the needs of the researcher and engage with them on
+           % technical aspects of the application.
 		\item[Hypothesis 2: No software is an island] \hfill \\
         Every scientific application has a dependency list. No definition of an application can be
             complete without an explicit expression of the list of its dependencies, which should
             extend as far as possible down userspace.
 		\item[Hypothesis 3: All applications need an environment] \hfill \\
         As with any organisms, biological or digital, it requires an environment in which to 
-            express its functionality,
-            digital organisms (scientific applications) are sterile if they are not placed in an
-            environment capable of expressing them. This environment can be expressed by
-            combinations of compilers, hardware architecture, application dependencies, middleware
-            stacks, {\it etc}.
+            express its functionality.%,
+           % digital organisms (scientific applications) are sterile if they are not placed in an
+           % environment capable of expressing them. This environment can be expressed by
+           % combinations of compilers, hardware architecture, application dependencies, middleware
+           % stacks, {\it etc}.
 		\item[Hypothesis 4: There is more than one environment] \hfill \\
         By restricting ourselves to a single environment, we lose main advantages of distributed
-            systems, and erect unncessary barriers to entry for researchers. We should thus design a
-            system which {\it simulates} all of the available sites which applications could in
-            principle be executed, to increase application portability.
+            systems, and erect unncessary barriers to entry for researchers. %We should thus design a
+            %system which {\it simulates} all of the available sites which applications could in
+            %principle be executed, to increase application portability.
 		\item[Hypothesis 5: Solutions Decay] \hfill \\
         A ``solution" in this case refers to a software expression of the method for creating an
             executable version of the application. The exploration of these solutions, including the
-            attempts which failed, are important components of the system knowledge. Due to
-            the development of software, it is likely that a found solution will not apply for
-            future iterations. Thus, solutions need to be expressed in a machine-readable form {\it
-            which is maintained in a version-controlled repository}
-		\item[Hypothesis 6: Humans need not apply\footnote{With apologies to CGP Grey - https://www.youtube.com/watch?v=7Pq-S557XQU}] \hfill \\
+            attempts which failed, are important components of the system knowledge. %Due to
+           % the development of software, it is likely that a found solution will not apply for
+           % future iterations. Thus, solutions need to be expressed in a machine-readable form {\it
+           % which is maintained in a version-controlled repository}
+        \item[Hypothesis 6: Humans need not apply] \hfill \\%\footnote{With apologies to CGP Grey - https://www.youtube.com/watch?v=7Pq-S557XQU}] \hfill \\
         If we assume that the previous hypotheses are true, it stands to reason that most of the
-            work to actuall compile and integrate applications can be automated. This represents a
-            major relief of workload from site administrators, as well as ensuring that human errors
-            are less frequently introduced. Furthermore, if a system is built with respecting open
-            standards, it becomes easier to extend it.
+            work to actuall compile and integrate applications can be automated. %This represents a
+            %major relief of workload from site administrators, as well as ensuring that human errors
+            %are less frequently introduced. Furthermore, if a system is built with respecting open
+            %standards, it becomes easier to extend it.
 		\item[Hypothesis 7: This is not hard] \hfill \\
         While it may seem that we are proposing a radical shift from common practice, which may seem
             discouraging, the fact is that continuous integration\cite{ContinuousIntegration} and
@@ -294,29 +294,35 @@ By building on as many environments as possible, for as many combinations as pos
 promotes diversity in computing platforms, without exacerbating the paradox of plentiful computing.
 
 \subsection{CODE-RADE is atomic}
-Successfully built git hashes are linked to a cvmfs hash, permitting reproducibility across sites and 
-allowing one the link research outputs to the underlying versions and builds. This is then citable via
-Zenodo digital object identifiers (doi) from the cvmfs hash, permitting the work done on the 
-infrastructure to be citable and credit given.
 
-Fine-grained control over dependencies, versions and targets
-Relevant action taken on each event
+Successfully built git hashes are linked to a cvmfs hash, permitting reproducibility across sites and 
+allowing one to link research outputs to the underlying versions and builds. This is then citable via
+Zenodo digital object identifiers (doi) from the cvmfs hash, permitting the work done on the 
+infrastructure to be citable and credit given, and critically be reproducible.
+The researcher has fine-grained control over dependencies, version, and targets that are built
+and built against. 
 
 \subsection{CODE-RADE is community-based}
 There is no restriction on the applications that can be integrated, so long as the software is accesable
 online in someway. Anyone can contribute applications, resources, code review, testing, or
 where ever their skill sets lie. 
+The entire community can see the build status and reinitiate failed builds via new pull requests.
+After a user updates their git repository, a git pull request is done, a build is executed. 
+The results of the build are publicly viewable, 
+errors are viewable by the user doing the pull request (and everybody else), via a full build transcript.
+This can be fixed
+by merely redoing a pull request with what ever changes are required to fix the errors. 
+This is completely indepdent of staff at sites.
 
 \subsection{CODE-RADE is Automated}
 
 There is a heavy relilance on automation in CODE-RADE, via automated agents to reduce bias, lead time
 and is user-driven.
-After a user updates their git repository, a git pull request is done, a build is executed. 
-The results of the build are publicly viewable, 
-errors are viewable by the user doing the pull request (and everybody else), and can be fixed
-by merely redoing a pull request with what ever changes are required to fix the errors. 
-Failures on jenkins cause issues on github, and the user is then able to fix these at their will.
+As an example, failures on jenkins cause issues on github, and the user is then able to fix these at
+their discretion.
 Successful subsequent builds will also close these issues.
+Notifications are sent to relevant slack channels (slack.com) and bots within slack permit actions
+to be taken, for instance postponing issues, reassigning, or closing.
 
 \section{Summary, Conclusion and Futher work}
 
