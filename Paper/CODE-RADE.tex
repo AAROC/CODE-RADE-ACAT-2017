@@ -54,7 +54,7 @@ getting programs to run as opposed to actually doing the science they intended t
     been massive and near-pervasive investment in HPC and distributed computing resources. There has
     been a coordinated national effort in South Africa to build a well-connected distributed computing
     platform\cite{SAGrid}, fully integrated and connected to the national research
-    network\cite{SANREN}. This effort has even been extended at a trans-continental scale, via the
+    network\cite{SANREN}. This effort has even been extended on a trans-continental scale, via the
     signature of a memorandum of understanding between African and European infrastructure
     providers\cite{AAROC}. With the creation of the Africa-Arabia Regional Operations
     Centre\footnote{See \url{"http://www.africa-grid.org"} for details}, several sites across Africa
@@ -91,7 +91,7 @@ getting programs to run as opposed to actually doing the science they intended t
     then come up against a tension between domain expertise and administrative privileges. The 
     {\it researcher}, not the site administrator is usually the one that best understands how to compile the
     application. The site administrator has the knowledge of the local setup
-    which would integrate the applicaiton appropriately and efficiently. 
+    which would integrate the application appropriately and efficiently. 
     This overhead is multiplied by the number of distinct application stacks which
     are in use in scientific domains, and exacerbated by the multitude of dependencies and
     optimisation configurations. For the physical sciences domain, this can be appreciated by
@@ -198,7 +198,7 @@ getting programs to run as opposed to actually doing the science they intended t
     software engineers and see whether it passes the tests set by the infrastructure operations
     team, at every commit pushed to the repository. This provides a direct link between change in
     the software and expression of that software (source code version linked to executable version),
-    and since the tests criteria are predefined, once they pass applications can be integrated
+    and since the criteria of the tests are predefined, once they pass applications can be integrated
     without human intervention.
 
 	In principle, the entire workflow can be driven by researchers themselves.
@@ -221,7 +221,7 @@ getting programs to run as opposed to actually doing the science they intended t
     There are several choices  which one could use to build a similar platform to CODE-RADE by
     choosing a particular tool to fulfill each component. In our case, we have selected
     Jenkins\cite{Jenkins}, GitHub\cite{Github} and CERN Virtual Machine Filesystem\cite{CVMFS}. The
-    reasoning and justification for these specific choices is given in some more detail below in
+    reasoning and justification for these specific choices are given in some more detail below in
     section \ref{Discussion}. The components have specific roles to play in each phase of the
     CODE-RADE workflow, which we describe next.
 
@@ -237,7 +237,7 @@ getting programs to run as opposed to actually doing the science they intended t
     updates. This is initiated by the Research Software Engineer: a commit is made to a repository,
     detailing a change which the RSE authors. This triggers an event on Jenkins, which pulls the
     latest commit and executes the scripts in the repository which will build and test the code. The
-    second step (Test) is conditionally executed on success of the previous step. This step checks
+    second step (Test) is conditionally executed on the success of the previous step. This step checks
     the viability of the built application and executes whatever tests are specified, then installs
     the application into the integration environment. Finally the third step (Deliver) cleans the
     built application and installs it into the deploy environment, then ships the executable code to
@@ -273,7 +273,7 @@ highlighted.
 
 \subsection{CODE-RADE is cross-platform}
 
-CODE-RADE takes a software description of an scientific tool and builds a digital expression which
+CODE-RADE takes a software description of a scientific tool and builds a digital expression which
 can be executed on arbitrary architectures. This makes CODE-RADE different from more traditional
 package managers, since these only build for the architecture on which the user is currently. By
 simulating the execution environment which may in principle be available at geographically
@@ -303,7 +303,7 @@ The researcher has fine-grained control over dependencies, version, and targets 
 and built against. 
 
 \subsection{CODE-RADE is community-based}
-There is no restriction on the applications that can be integrated, so long as the software is accesable
+There is no restriction on the applications that can be integrated, so long as the software is accesible
 online in someway. Anyone can contribute applications, resources, code review, testing, or
 where ever their skill sets lie. 
 The entire community can see the build status and reinitiate failed builds via new pull requests.
@@ -324,7 +324,7 @@ Successful subsequent builds will also close these issues.
 Notifications are sent to relevant slack channels (slack.com) and bots within slack permit actions
 to be taken, for instance postponing issues, reassigning, or closing.
 
-\section{Summary, Conclusion and Futher work}
+\section{Summary, Conclusion and Further work}
 
 Making the best use of computational infrastructure comes down to running applications.
 Maintaining and porting them is a hard and often thankless task.
